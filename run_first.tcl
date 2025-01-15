@@ -40,7 +40,7 @@ cd ${PROJECT_DIR}/frontend
 # cd ${PROJECT_DIR}/backend/layout/work
 ## apenas o programa
 # innovus
-innovus -file ${PROJECT_DIR}/backend/layout/scripts/layout.tcl
+innovus -stylus -file ${PROJECT_DIR}/backend/layout/scripts/layout.tcl
 
 
 

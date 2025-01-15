@@ -22,8 +22,8 @@ set MAIN_RST_NAME rst_n
 set BEST_LIB_OPERATING_CONDITION PVT_1P32V_0C
 set WORST_LIB_OPERATING_CONDITION PVT_0P9V_125C
 set period_clk 100.0  ;# (100 ns = 10 MHz) (10 ns = 100 MHz) (2 ns = 500 MHz) (1 ns = 1 GHz)
-set clk_uncertainty 0.05 ;# ns (“a guess”)
-set clk_latency 0.10 ;# ns (“a guess”)
+set clk_uncertainty 0.05 ;# ns ("a guess")
+set clk_latency 0.10 ;# ns ("a guess")
 set in_delay 0.30 ;# ns
 set out_delay 0.30;#ns
 set out_load 0.045 ;#pF
@@ -67,23 +67,136 @@ set NET_ONE VDD
 #-----------------------------------------------------------------------------
 source ${LAYOUT_DIR}/scripts/${DESIGNS}.globals
 
+# #-----------------------------------------------------------------------------
+# # Initiates the design files loaded above
+# #-----------------------------------------------------------------------------
+# init_design
+
+
 #-----------------------------------------------------------------------------
-# Initiates the design files loaded above
+# Initiates the design files (netlist, LEFs, timing libraries)
 #-----------------------------------------------------------------------------
+set_db init_power_nets $NET_ONE
+set_db init_ground_nets $NET_ZERO
+read_mmmc ${LAYOUT_DIR}/scripts/${DESIGNS}.view
+read_physical -lef $LEF_INIT
+read_netlist ${BACKEND_DIR}/synthesis/deliverables/${DESIGNS}.v
 init_design
+connect_global_net $NET_ONE -type pg_pin -pin_base_name $NET_ONE -inst_base_name *
+connect_global_net $NET_ZERO -type pg_pin -pin_base_name $NET_ZERO -inst_base_name *
 
 #-----------------------------------------------------------------------------
 # Tells Innovus the technology being used
 #-----------------------------------------------------------------------------
-setDesignMode -process 45
+# setDesignMode -process 45
+set_db design_process_node 45
 
 #-----------------------------------------------------------------------------
 # Specify floorplan
 #-----------------------------------------------------------------------------
-graphical
+create_floorplan -core_margins_by die -site CoreSite -core_density_size 1 0.7 2.5 2.5 2.5 2.5
+# graphical
 
 # floorplan: aims aspect ratio = 1 and moves IO pads 8.0 microns from the outside edge of the core core box. core utilization = 0.85
 
+#-----------------------------------------------------------------------------
+# Add ring (Power planning)
+#-----------------------------------------------------------------------------
+# graphical or command
+set_db add_rings_skip_shared_inner_ring none
+set_db add_rings_avoid_short 1
+set_db add_rings_ignore_rows 0
+set_db add_rings_extend_over_row 0
+add_rings -type core_rings -jog_distance 0.6 -threshold 0.6 -nets "$NET_ONE $NET_ZERO" -follow core -layer {bottom Metal11 top Metal11 right Metal10 left Metal10} -width 0.7 -spacing 0.4 -offset 0.6
+
+#-----------------------------------------------------------------------------
+# Add stripes (Power planning)
+#-----------------------------------------------------------------------------
+# graphical or command
+add_stripes -block_ring_top_layer_limit Metal11 -max_same_layer_jog_length 0.44 -pad_core_ring_bottom_layer_limit Metal9 -set_to_set_distance 7 -pad_core_ring_top_layer_limit Metal11 -spacing 0.4 -layer Metal10 -block_ring_bottom_layer_limit Metal9 -width 0.22 -start_offset 1 -nets "$NET_ONE $NET_ZERO"
+
+#-----------------------------------------------------------------------------
+# Sroute
+#-----------------------------------------------------------------------------
+# graphical or command
+route_special -connect core_pin -layer_change_range { Metal1(1) Metal11(11) } -block_pin_target nearest_target -core_pin_target first_after_row_end -allow_jogging 1 -crossover_via_layer_range { Metal1(1) Metal11(11) } -nets "$NET_ONE $NET_ZERO" -allow_layer_change 1 -target_via_layer_range { Metal1(1) Metal11(11) }
+
+
+#-----------------------------------------------------------------------------
+# Save Design: 01_power.enc
+#-----------------------------------------------------------------------------
+# graphical or command
+write_db 01_power.enc
+
+
+#-----------------------------------------------------------------------------
+# Placement
+#-----------------------------------------------------------------------------
+# graphical or command
+set_db place_global_place_io_pins 1
+set_db place_global_reorder_scan 0
+place_design
+
+
+#-----------------------------------------------------------------------------
+# Save Design: 02_placement.enc
+#-----------------------------------------------------------------------------
+# graphical or command
+write_db 02_placement.enc
+
+
+#-----------------------------------------------------------------------------
+# Extract RC
+#-----------------------------------------------------------------------------
+# graphical or command
+set_db extract_rc_engine pre_route
+extract_rc ;# generates RC database for timing analysis and signal integrity (SI) anaysis
+
+
+#-----------------------------------------------------------------------------
+# preCTS optimization
+#-----------------------------------------------------------------------------
+#set_db opt_drv_fix_max_cap true ; set_db opt_drv_fix_max_tran true ; set_db opt_fix_fanout_load false
+#opt_design -pre_cts
+
+
+#-----------------------------------------------------------------------------
+# Pre-CTS timing verification
+#-----------------------------------------------------------------------------
+set_db timing_analysis_type best_case_worst_case
+time_design -pre_cts
+
+
+#-----------------------------------------------------------------------------
+# CTS - Clock Concurrent Optimization Flow
+#-----------------------------------------------------------------------------
+get_db clock_trees
+create_clock_tree_spec ;# creates a database cts spec
+get_db clock_trees
+ccopt_design ;# creates the clock tree
+#delete_clock_tree_spec ;# removes the already loaded cts specification (reset_cts_config)
+
+
+#-----------------------------------------------------------------------------
+# Post-CTS timing verification
+#-----------------------------------------------------------------------------
+set_db timing_analysis_type best_case_worst_case
+set_db timing_analysis_clock_propagation_mode sdc_control
+time_design -post_cts
+time_design -post_cts -hold
+
+#-----------------------------------------------------------------------------
+# postCTS optimization
+#-----------------------------------------------------------------------------
+#opt_design -post_cts
+
+
+#-----------------------------------------------------------------------------
+# Save Design: 03_cts.enc
+#-----------------------------------------------------------------------------
+# graphical or command
+write_db 03_cts.enc
+# graphical
 
 #-----------------------------------------------------------------------------
 # Power nets (Power planning) creating power, grounds rings and stripes
@@ -113,3 +226,5 @@ graphical
 # Save Design: 01_power.enc
 #-----------------------------------------------------------------------------
 # graphical
+
+gui_show

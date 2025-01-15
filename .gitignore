@@ -1,0 +1,8 @@
+**/innovus.log*
+**/innovus.logv*
+innovus.cmd*
+**/innovus.cmd*
+frontend/timingReports/**/*
+frontend/01_power.enc/**/*
+frontend/02_placement.enc/**/*
+frontend/01_cts.enc/**/*
