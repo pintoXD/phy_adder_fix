@@ -1,0 +1,318 @@
+[01/15 10:47:53      0s] 
+[01/15 10:47:53      0s] Cadence Innovus(TM) Implementation System.
+[01/15 10:47:53      0s] Copyright 2021 Cadence Design Systems, Inc. All rights reserved worldwide.
+[01/15 10:47:53      0s] 
+[01/15 10:47:53      0s] Version:	v21.15-s110_1, built Fri Sep 23 13:08:12 PDT 2022
+[01/15 10:47:53      0s] Options:	-file /home/cinovador/Downloads/somador_fisico_UPDATE/backend/layout/scripts/layout.tcl 
+[01/15 10:47:53      0s] Date:		Wed Jan 15 10:47:53 2025
+[01/15 10:47:53      0s] Host:		cinova05.lesc.ufc.br (x86_64 w/Linux 4.18.0-553.27.1.el8_10.x86_64) (14cores*20cpus*13th Gen Intel(R) Core(TM) i5-13500 24576KB)
+[01/15 10:47:53      0s] OS:		Rocky Linux release 8.10 (Green Obsidian)
+[01/15 10:47:53      0s] 
+[01/15 10:47:53      0s] License:
+[01/15 10:47:53      0s] 		[10:47:53.201633] Configured Lic search path (21.01-s002): 5280@192.168.0.10
+
+[01/15 10:48:03      0s] 		invs	Innovus Implementation System	21.1	checkout succeeded
+[01/15 10:48:03      0s] 		8 CPU jobs allowed with the current license(s). Use setMultiCpuUsage to set your required CPU count.
+[01/15 10:48:11      7s] Reset Parastics called with the command setExtractRCMode -reset@(#)CDS: Innovus v21.15-s110_1 (64bit) 09/23/2022 13:08 (Linux 3.10.0-693.el7.x86_64)
+[01/15 10:48:13      9s] @(#)CDS: NanoRoute 21.15-s110_1 NR220912-2004/21_15-UB (database version 18.20.592) {superthreading v2.17}
+[01/15 10:48:13      9s] @(#)CDS: AAE 21.15-s039 (64bit) 09/23/2022 (Linux 3.10.0-693.el7.x86_64)
+[01/15 10:48:13      9s] @(#)CDS: CTE 21.15-s038_1 () Sep 20 2022 11:42:13 ( )
+[01/15 10:48:13      9s] @(#)CDS: SYNTECH 21.15-s012_1 () Sep  5 2022 10:25:51 ( )
+[01/15 10:48:13      9s] @(#)CDS: CPE v21.15-s076
+[01/15 10:48:13      9s] @(#)CDS: IQuantus/TQuantus 21.1.1-s867 (64bit) Sun Jun 26 22:12:54 PDT 2022 (Linux 3.10.0-693.el7.x86_64)
+[01/15 10:48:13      9s] @(#)CDS: OA 22.60-p076 Wed May 18 13:45:29 2022
+[01/15 10:48:13      9s] @(#)CDS: SGN 20.10-d001 (01-Jun-2020) (64 bit executable, Qt5.9.0)
+[01/15 10:48:13      9s] @(#)CDS: RCDB 11.15.0
+[01/15 10:48:13      9s] @(#)CDS: STYLUS 21.12-s013_1 (08/15/2022 08:25 PDT)
+[01/15 10:48:13      9s] @(#)CDS: SystemPlanner-21.15Rel-8720 (21.15) (2022-08-22 18:31:54+0800)
+[01/15 10:48:13      9s] Create and set the environment variable TMPDIR to /tmp/innovus_temp_30834_cinova05.lesc.ufc.br_cinovador_RPdw9f.
+
+[01/15 10:48:13      9s] Change the soft stacksize limit to 0.2%RAM (63 mbytes). Set global soft_stack_size_limit to change the value.
+[01/15 10:48:14     10s] 
+[01/15 10:48:14     10s] **INFO:  MMMC transition support version v31-84 
+[01/15 10:48:14     10s] 
+[01/15 10:48:14     10s] <CMD> set_global _enable_mmmc_by_default_flow      $CTE::mmmc_default
+[01/15 10:48:14     10s] <CMD> suppressMessage ENCEXT-2799
+[01/15 10:48:14     10s] <CMD> getVersion
+[01/15 10:48:14     10s] [INFO] Loading PVS 23.11 fill procedures
+[01/15 10:48:14     10s] Sourcing file "/home/cinovador/Downloads/somador_fisico_UPDATE/backend/layout/scripts/layout.tcl" ...
+[01/15 10:48:14     10s] <CMD> set defHierChar /
+[01/15 10:48:14     10s] Set Default Input Pin Transition as 0.1 ps.
+[01/15 10:48:14     10s] <CMD> set delaycal_input_transition_delay 0.1ps
+[01/15 10:48:14     10s] <CMD> set fpIsMaxIoHeight 0
+[01/15 10:48:14     10s] <CMD> set init_design_settop 0
+[01/15 10:48:14     10s] <CMD> set init_gnd_net VSS
+[01/15 10:48:14     10s] <CMD> set init_lef_file {/home/tools/cadence/gpdk/gsclib045_svt_v4.4/lan/flow/t1u1/reference_libs/GPDK045/gsclib045_svt_v4.4/gsclib045/lef/gsclib045_tech.lef /home/tools/cadence/gpdk/gsclib045_svt_v4.4/lan/flow/t1u1/reference_libs/GPDK045/gsclib045_svt_v4.4/gsclib045/lef/gsclib045_macro.lef}
+[01/15 10:48:14     10s] <CMD> set init_mmmc_file /home/cinovador/Downloads/somador_fisico_UPDATE/backend/layout/scripts/somador.view
+[01/15 10:48:14     10s] <CMD> set init_oa_search_lib {}
+[01/15 10:48:14     10s] <CMD> set init_pwr_net VDD
+[01/15 10:48:14     10s] <CMD> set init_verilog /home/cinovador/Downloads/somador_fisico_UPDATE/backend/synthesis/deliverables/somador.v
+[01/15 10:48:14     10s] <CMD> init_design
+[01/15 10:48:14     10s] #% Begin Load MMMC data ... (date=01/15 10:48:14, mem=1013.1M)
+[01/15 10:48:14     10s] #% End Load MMMC data ... (date=01/15 10:48:14, total cpu=0:00:00.0, real=0:00:00.0, peak res=1014.1M, current mem=1014.1M)
+[01/15 10:48:14     10s] 
+[01/15 10:48:14     10s] Loading LEF file /home/tools/cadence/gpdk/gsclib045_svt_v4.4/lan/flow/t1u1/reference_libs/GPDK045/gsclib045_svt_v4.4/gsclib045/lef/gsclib045_tech.lef ...
+[01/15 10:48:14     10s] 
+[01/15 10:48:14     10s] Loading LEF file /home/tools/cadence/gpdk/gsclib045_svt_v4.4/lan/flow/t1u1/reference_libs/GPDK045/gsclib045_svt_v4.4/gsclib045/lef/gsclib045_macro.lef ...
+[01/15 10:48:14     10s] Set DBUPerIGU to M2 pitch 400.
+[01/15 10:48:14     10s] **WARN: (IMPLF-200):	Pin 'A' in macro 'ANTENNA' has no ANTENNAGATEAREA value defined. The library data is incomplete and some process antenna rules will not be checked correctly.
+[01/15 10:48:14     10s] Type 'man IMPLF-200' for more detail.
+[01/15 10:48:14     10s] 
+##  Check design process and node:  
+##  Both design process and tech node are not set.
+
+[01/15 10:48:14     10s] Loading view definition file from /home/cinovador/Downloads/somador_fisico_UPDATE/backend/layout/scripts/somador.view
+[01/15 10:48:14     10s] Reading slow timing library '/home/tools/cadence/gpdk/gsclib045_svt_v4.4/lan/flow/t1u1/reference_libs/GPDK045/gsclib045_svt_v4.4/gsclib045/timing/slow_vdd1v0_basicCells.lib' ...
+[01/15 10:48:14     10s] **WARN: (TECHLIB-302):	No function defined for cell 'DECAP9'. The cell will only be used for analysis. (File /home/tools/cadence/gpdk/gsclib045_svt_v4.4/lan/flow/t1u1/reference_libs/GPDK045/gsclib045_svt_v4.4/gsclib045/timing/slow_vdd1v0_basicCells.lib)
+[01/15 10:48:14     10s] **WARN: (TECHLIB-302):	No function defined for cell 'DECAP8'. The cell will only be used for analysis. (File /home/tools/cadence/gpdk/gsclib045_svt_v4.4/lan/flow/t1u1/reference_libs/GPDK045/gsclib045_svt_v4.4/gsclib045/timing/slow_vdd1v0_basicCells.lib)
+[01/15 10:48:14     10s] **WARN: (TECHLIB-302):	No function defined for cell 'DECAP7'. The cell will only be used for analysis. (File /home/tools/cadence/gpdk/gsclib045_svt_v4.4/lan/flow/t1u1/reference_libs/GPDK045/gsclib045_svt_v4.4/gsclib045/timing/slow_vdd1v0_basicCells.lib)
+[01/15 10:48:14     10s] **WARN: (TECHLIB-302):	No function defined for cell 'DECAP6'. The cell will only be used for analysis. (File /home/tools/cadence/gpdk/gsclib045_svt_v4.4/lan/flow/t1u1/reference_libs/GPDK045/gsclib045_svt_v4.4/gsclib045/timing/slow_vdd1v0_basicCells.lib)
+[01/15 10:48:14     10s] **WARN: (TECHLIB-302):	No function defined for cell 'DECAP5'. The cell will only be used for analysis. (File /home/tools/cadence/gpdk/gsclib045_svt_v4.4/lan/flow/t1u1/reference_libs/GPDK045/gsclib045_svt_v4.4/gsclib045/timing/slow_vdd1v0_basicCells.lib)
+[01/15 10:48:14     10s] **WARN: (TECHLIB-302):	No function defined for cell 'DECAP4'. The cell will only be used for analysis. (File /home/tools/cadence/gpdk/gsclib045_svt_v4.4/lan/flow/t1u1/reference_libs/GPDK045/gsclib045_svt_v4.4/gsclib045/timing/slow_vdd1v0_basicCells.lib)
+[01/15 10:48:14     10s] **WARN: (TECHLIB-302):	No function defined for cell 'DECAP3'. The cell will only be used for analysis. (File /home/tools/cadence/gpdk/gsclib045_svt_v4.4/lan/flow/t1u1/reference_libs/GPDK045/gsclib045_svt_v4.4/gsclib045/timing/slow_vdd1v0_basicCells.lib)
+[01/15 10:48:14     10s] **WARN: (TECHLIB-302):	No function defined for cell 'DECAP2'. The cell will only be used for analysis. (File /home/tools/cadence/gpdk/gsclib045_svt_v4.4/lan/flow/t1u1/reference_libs/GPDK045/gsclib045_svt_v4.4/gsclib045/timing/slow_vdd1v0_basicCells.lib)
+[01/15 10:48:14     10s] **WARN: (TECHLIB-302):	No function defined for cell 'DECAP10'. The cell will only be used for analysis. (File /home/tools/cadence/gpdk/gsclib045_svt_v4.4/lan/flow/t1u1/reference_libs/GPDK045/gsclib045_svt_v4.4/gsclib045/timing/slow_vdd1v0_basicCells.lib)
+[01/15 10:48:14     10s] **WARN: (TECHLIB-302):	No function defined for cell 'ANTENNA'. The cell will only be used for analysis. (File /home/tools/cadence/gpdk/gsclib045_svt_v4.4/lan/flow/t1u1/reference_libs/GPDK045/gsclib045_svt_v4.4/gsclib045/timing/slow_vdd1v0_basicCells.lib)
+[01/15 10:48:14     10s] Read 489 cells in library 'slow_vdd1v0' 
+[01/15 10:48:14     10s] Reading fast timing library '/home/tools/cadence/gpdk/gsclib045_svt_v4.4/lan/flow/t1u1/reference_libs/GPDK045/gsclib045_svt_v4.4/gsclib045/timing/fast_vdd1v2_basicCells.lib' ...
+[01/15 10:48:15     10s] **WARN: (TECHLIB-302):	No function defined for cell 'DECAP9'. The cell will only be used for analysis. (File /home/tools/cadence/gpdk/gsclib045_svt_v4.4/lan/flow/t1u1/reference_libs/GPDK045/gsclib045_svt_v4.4/gsclib045/timing/fast_vdd1v2_basicCells.lib)
+[01/15 10:48:15     10s] **WARN: (TECHLIB-302):	No function defined for cell 'DECAP8'. The cell will only be used for analysis. (File /home/tools/cadence/gpdk/gsclib045_svt_v4.4/lan/flow/t1u1/reference_libs/GPDK045/gsclib045_svt_v4.4/gsclib045/timing/fast_vdd1v2_basicCells.lib)
+[01/15 10:48:15     10s] **WARN: (TECHLIB-302):	No function defined for cell 'DECAP7'. The cell will only be used for analysis. (File /home/tools/cadence/gpdk/gsclib045_svt_v4.4/lan/flow/t1u1/reference_libs/GPDK045/gsclib045_svt_v4.4/gsclib045/timing/fast_vdd1v2_basicCells.lib)
+[01/15 10:48:15     10s] **WARN: (TECHLIB-302):	No function defined for cell 'DECAP6'. The cell will only be used for analysis. (File /home/tools/cadence/gpdk/gsclib045_svt_v4.4/lan/flow/t1u1/reference_libs/GPDK045/gsclib045_svt_v4.4/gsclib045/timing/fast_vdd1v2_basicCells.lib)
+[01/15 10:48:15     10s] **WARN: (TECHLIB-302):	No function defined for cell 'DECAP5'. The cell will only be used for analysis. (File /home/tools/cadence/gpdk/gsclib045_svt_v4.4/lan/flow/t1u1/reference_libs/GPDK045/gsclib045_svt_v4.4/gsclib045/timing/fast_vdd1v2_basicCells.lib)
+[01/15 10:48:15     10s] **WARN: (TECHLIB-302):	No function defined for cell 'DECAP4'. The cell will only be used for analysis. (File /home/tools/cadence/gpdk/gsclib045_svt_v4.4/lan/flow/t1u1/reference_libs/GPDK045/gsclib045_svt_v4.4/gsclib045/timing/fast_vdd1v2_basicCells.lib)
+[01/15 10:48:15     10s] **WARN: (TECHLIB-302):	No function defined for cell 'DECAP3'. The cell will only be used for analysis. (File /home/tools/cadence/gpdk/gsclib045_svt_v4.4/lan/flow/t1u1/reference_libs/GPDK045/gsclib045_svt_v4.4/gsclib045/timing/fast_vdd1v2_basicCells.lib)
+[01/15 10:48:15     10s] **WARN: (TECHLIB-302):	No function defined for cell 'DECAP2'. The cell will only be used for analysis. (File /home/tools/cadence/gpdk/gsclib045_svt_v4.4/lan/flow/t1u1/reference_libs/GPDK045/gsclib045_svt_v4.4/gsclib045/timing/fast_vdd1v2_basicCells.lib)
+[01/15 10:48:15     10s] **WARN: (TECHLIB-302):	No function defined for cell 'DECAP10'. The cell will only be used for analysis. (File /home/tools/cadence/gpdk/gsclib045_svt_v4.4/lan/flow/t1u1/reference_libs/GPDK045/gsclib045_svt_v4.4/gsclib045/timing/fast_vdd1v2_basicCells.lib)
+[01/15 10:48:15     10s] **WARN: (TECHLIB-302):	No function defined for cell 'ANTENNA'. The cell will only be used for analysis. (File /home/tools/cadence/gpdk/gsclib045_svt_v4.4/lan/flow/t1u1/reference_libs/GPDK045/gsclib045_svt_v4.4/gsclib045/timing/fast_vdd1v2_basicCells.lib)
+[01/15 10:48:15     10s] Read 489 cells in library 'fast_vdd1v2' 
+[01/15 10:48:15     11s] Ending "PreSetAnalysisView" (total cpu=0:00:00.5, real=0:00:01.0, peak res=1092.0M, current mem=1039.2M)
+[01/15 10:48:15     11s] *** End library_loading (cpu=0.01min, real=0.02min, mem=40.9M, fe_cpu=0.18min, fe_real=0.37min, fe_mem=1234.6M) ***
+[01/15 10:48:15     11s] #% Begin Load netlist data ... (date=01/15 10:48:15, mem=1039.2M)
+[01/15 10:48:15     11s] *** Begin netlist parsing (mem=1234.6M) ***
+[01/15 10:48:15     11s] Created 489 new cells from 2 timing libraries.
+[01/15 10:48:15     11s] Reading netlist ...
+[01/15 10:48:15     11s] Backslashed names will retain backslash and a trailing blank character.
+[01/15 10:48:15     11s] Reading verilog netlist '/home/cinovador/Downloads/somador_fisico_UPDATE/backend/synthesis/deliverables/somador.v'
+[01/15 10:48:15     11s] 
+[01/15 10:48:15     11s] *** Memory Usage v#1 (Current mem = 1234.613M, initial mem = 483.883M) ***
+[01/15 10:48:15     11s] *** End netlist parsing (cpu=0:00:00.0, real=0:00:00.0, mem=1234.6M) ***
+[01/15 10:48:15     11s] #% End Load netlist data ... (date=01/15 10:48:15, total cpu=0:00:00.0, real=0:00:00.0, peak res=1052.9M, current mem=1052.9M)
+[01/15 10:48:15     11s] Top level cell is somador.
+[01/15 10:48:15     11s] Hooked 978 DB cells to tlib cells.
+[01/15 10:48:15     11s] Ending "BindLib:" (total cpu=0:00:00.0, real=0:00:00.0, peak res=1067.4M, current mem=1067.4M)
+[01/15 10:48:15     11s] Starting recursive module instantiation check.
+[01/15 10:48:15     11s] No recursion found.
+[01/15 10:48:15     11s] Building hierarchical netlist for Cell somador ...
+[01/15 10:48:15     11s] *** Netlist is unique.
+[01/15 10:48:15     11s] Setting Std. cell height to 3420 DBU (smallest netlist inst).
+[01/15 10:48:15     11s] ** info: there are 1073 modules.
+[01/15 10:48:15     11s] ** info: there are 17 stdCell insts.
+[01/15 10:48:15     11s] 
+[01/15 10:48:15     11s] *** Memory Usage v#1 (Current mem = 1295.027M, initial mem = 483.883M) ***
+[01/15 10:48:15     11s] **WARN: (IMPFP-3961):	The techSite 'CornerSite' has no related standard cells in the LEF/OA library. The calculations for this site type cannot be made unless standard cell models of this type exist in the LEF/OA library. Ignore this warning if the SITE is not used by the library. Alternatively, remove the SITE definition for the LEF/OA library to avoid this message.
+[01/15 10:48:15     11s] Type 'man IMPFP-3961' for more detail.
+[01/15 10:48:15     11s] **WARN: (IMPFP-3961):	The techSite 'IOSite' has no related standard cells in the LEF/OA library. The calculations for this site type cannot be made unless standard cell models of this type exist in the LEF/OA library. Ignore this warning if the SITE is not used by the library. Alternatively, remove the SITE definition for the LEF/OA library to avoid this message.
+[01/15 10:48:15     11s] Type 'man IMPFP-3961' for more detail.
+[01/15 10:48:15     11s] Start create_tracks
+[01/15 10:48:15     11s] Extraction setup Started 
+[01/15 10:48:15     11s] 
+[01/15 10:48:15     11s] Trim Metal Layers:
+[01/15 10:48:15     11s] Initializing multi-corner RC extraction with 2 active RC Corners ...
+[01/15 10:48:15     11s] Reading Capacitance Table File /home/tools/cadence/gpdk/gpdk045_v_6_0/soce/gpdk045.basic.CapTbl ...
+[01/15 10:48:15     11s] Cap table was created using Encounter 09.11-s082_1.
+[01/15 10:48:15     11s] Process name: gpdk045.
+[01/15 10:48:15     11s] **WARN: (IMPEXT-2662):	Cap table /home/tools/cadence/gpdk/gpdk045_v_6_0/soce/gpdk045.basic.CapTbl does not have the EXTENDED section. It will use only BASIC cap table section for RC extraction.
+[01/15 10:48:15     11s] Reading Capacitance Table File /home/tools/cadence/gpdk/gpdk045_v_6_0/soce/gpdk045.basic.CapTbl ...
+[01/15 10:48:15     11s] Cap table was created using Encounter 09.11-s082_1.
+[01/15 10:48:15     11s] Process name: gpdk045.
+[01/15 10:48:15     11s] **WARN: (IMPEXT-2662):	Cap table /home/tools/cadence/gpdk/gpdk045_v_6_0/soce/gpdk045.basic.CapTbl does not have the EXTENDED section. It will use only BASIC cap table section for RC extraction.
+[01/15 10:48:15     11s] Summary of Active RC-Corners : 
+[01/15 10:48:15     11s]  
+[01/15 10:48:15     11s]  Analysis View: analysis_normal_slow_max
+[01/15 10:48:15     11s]     RC-Corner Name        : rc_worst
+[01/15 10:48:15     11s]     RC-Corner Index       : 0
+[01/15 10:48:15     11s]     RC-Corner Temperature : 125 Celsius
+[01/15 10:48:15     11s]     RC-Corner Cap Table   : '/home/tools/cadence/gpdk/gpdk045_v_6_0/soce/gpdk045.basic.CapTbl'
+[01/15 10:48:15     11s]     RC-Corner PreRoute Res Factor         : 1
+[01/15 10:48:15     11s]     RC-Corner PreRoute Cap Factor         : 1
+[01/15 10:48:15     11s]     RC-Corner PostRoute Res Factor        : 1 {1 1 1}
+[01/15 10:48:15     11s]     RC-Corner PostRoute Cap Factor        : 1 {1 1 1}
+[01/15 10:48:15     11s]     RC-Corner PostRoute XCap Factor       : 1 {1 1 1}
+[01/15 10:48:15     11s]     RC-Corner PreRoute Clock Res Factor   : 1	[Derived from postRoute_res (effortLevel low)]
+[01/15 10:48:15     11s]     RC-Corner PreRoute Clock Cap Factor   : 1	[Derived from postRoute_cap (effortLevel low)]
+[01/15 10:48:15     11s]     RC-Corner PostRoute Clock Cap Factor  : 1 {1 1 1} 	[Derived from postRoute_cap (effortLevel low)]
+[01/15 10:48:15     11s]     RC-Corner PostRoute Clock Res Factor  : 1 {1 1 1} 	[Derived from postRoute_res (effortLevel low)]
+[01/15 10:48:15     11s]     RC-Corner PostRoute Clock coupling capacitance Factor : 1 {1 1 1} 
+[01/15 10:48:15     11s]  
+[01/15 10:48:15     11s]  Analysis View: analysis_normal_fast_min
+[01/15 10:48:15     11s]     RC-Corner Name        : rc_best
+[01/15 10:48:15     11s]     RC-Corner Index       : 1
+[01/15 10:48:15     11s]     RC-Corner Temperature : 0 Celsius
+[01/15 10:48:15     11s]     RC-Corner Cap Table   : '/home/tools/cadence/gpdk/gpdk045_v_6_0/soce/gpdk045.basic.CapTbl'
+[01/15 10:48:15     11s]     RC-Corner PreRoute Res Factor         : 1
+[01/15 10:48:15     11s]     RC-Corner PreRoute Cap Factor         : 1
+[01/15 10:48:15     11s]     RC-Corner PostRoute Res Factor        : 1 {1 1 1}
+[01/15 10:48:15     11s]     RC-Corner PostRoute Cap Factor        : 1 {1 1 1}
+[01/15 10:48:15     11s]     RC-Corner PostRoute XCap Factor       : 1 {1 1 1}
+[01/15 10:48:15     11s]     RC-Corner PreRoute Clock Res Factor   : 1	[Derived from postRoute_res (effortLevel low)]
+[01/15 10:48:15     11s]     RC-Corner PreRoute Clock Cap Factor   : 1	[Derived from postRoute_cap (effortLevel low)]
+[01/15 10:48:15     11s]     RC-Corner PostRoute Clock Cap Factor  : 1 {1 1 1} 	[Derived from postRoute_cap (effortLevel low)]
+[01/15 10:48:15     11s]     RC-Corner PostRoute Clock Res Factor  : 1 {1 1 1} 	[Derived from postRoute_res (effortLevel low)]
+[01/15 10:48:15     11s]     RC-Corner PostRoute Clock coupling capacitance Factor : 1 {1 1 1} 
+[01/15 10:48:15     11s] 
+[01/15 10:48:15     11s] Trim Metal Layers:
+[01/15 10:48:15     11s] LayerId::1 widthSet size::4
+[01/15 10:48:15     11s] LayerId::2 widthSet size::4
+[01/15 10:48:15     11s] LayerId::3 widthSet size::4
+[01/15 10:48:15     11s] LayerId::4 widthSet size::4
+[01/15 10:48:15     11s] LayerId::5 widthSet size::4
+[01/15 10:48:15     11s] LayerId::6 widthSet size::4
+[01/15 10:48:15     11s] LayerId::7 widthSet size::4
+[01/15 10:48:15     11s] LayerId::8 widthSet size::4
+[01/15 10:48:15     11s] LayerId::9 widthSet size::4
+[01/15 10:48:15     11s] LayerId::10 widthSet size::4
+[01/15 10:48:15     11s] LayerId::11 widthSet size::3
+[01/15 10:48:15     11s] Updating RC grid for preRoute extraction ...
+[01/15 10:48:15     11s] eee: pegSigSF::1.070000
+[01/15 10:48:15     11s] Initializing multi-corner resistance tables ...
+[01/15 10:48:15     11s] eee: l::1 avDens::0.000000 usedTrk::0.000000 availTrk::0.000000 sigTrk::0.000000
+[01/15 10:48:15     11s] eee: l::2 avDens::0.000000 usedTrk::0.000000 availTrk::0.000000 sigTrk::0.000000
+[01/15 10:48:15     11s] eee: l::3 avDens::0.000000 usedTrk::0.000000 availTrk::0.000000 sigTrk::0.000000
+[01/15 10:48:15     11s] eee: l::4 avDens::0.000000 usedTrk::0.000000 availTrk::0.000000 sigTrk::0.000000
+[01/15 10:48:15     11s] eee: l::5 avDens::0.000000 usedTrk::0.000000 availTrk::0.000000 sigTrk::0.000000
+[01/15 10:48:15     11s] eee: l::6 avDens::0.000000 usedTrk::0.000000 availTrk::0.000000 sigTrk::0.000000
+[01/15 10:48:15     11s] eee: l::7 avDens::0.000000 usedTrk::0.000000 availTrk::0.000000 sigTrk::0.000000
+[01/15 10:48:15     11s] eee: l::8 avDens::0.000000 usedTrk::0.000000 availTrk::0.000000 sigTrk::0.000000
+[01/15 10:48:15     11s] eee: l::9 avDens::0.000000 usedTrk::0.000000 availTrk::0.000000 sigTrk::0.000000
+[01/15 10:48:15     11s] eee: l::10 avDens::0.000000 usedTrk::0.000000 availTrk::0.000000 sigTrk::0.000000
+[01/15 10:48:15     11s] eee: l::11 avDens::0.000000 usedTrk::0.000000 availTrk::0.000000 sigTrk::0.000000
+[01/15 10:48:15     11s] {RT rc_worst 0 11 11 {8 0} {10 0} 2}
+[01/15 10:48:15     11s] eee: LAM: n=40 LLS=2-3 HLS=3-5 rDens=0.000000 uaWl=0.000000 uaWlH=0.000000 aWlH=0.000000 lMod=0 pMax=0.850000 pMod=82 wcR=0.772700 newSi=0.000000 wHLS=1.931750 siPrev=0 viaL=0.000000
+[01/15 10:48:15     11s] *Info: initialize multi-corner CTS.
+[01/15 10:48:15     11s] Ending "SetAnalysisView" (total cpu=0:00:00.0, real=0:00:00.0, peak res=1332.7M, current mem=1093.4M)
+[01/15 10:48:15     11s] Reading timing constraints file '/home/cinovador/Downloads/somador_fisico_UPDATE/backend/synthesis/constraints/somador.sdc' ...
+[01/15 10:48:15     11s] Current (total cpu=0:00:11.4, real=0:00:22.0, peak res=1348.7M, current mem=1348.7M)
+[01/15 10:48:15     11s] INFO (CTE): Constraints read successfully.
+[01/15 10:48:15     11s] Ending "Constraint file reading stats" (total cpu=0:00:00.1, real=0:00:00.0, peak res=1442.5M, current mem=1442.5M)
+[01/15 10:48:15     11s] Current (total cpu=0:00:11.5, real=0:00:22.0, peak res=1442.5M, current mem=1442.5M)
+[01/15 10:48:15     11s] Tech dependent Parameter, Build TLibAnalyzer for: cellAreaConsiderPadding
+[01/15 10:48:15     11s] 
+[01/15 10:48:15     11s] TimeStamp Creating Cell Server ...(0, 1, 1, 1) Begin ...
+[01/15 10:48:15     11s] Summary for sequential cells identification: 
+[01/15 10:48:15     11s]   Identified SBFF number: 104
+[01/15 10:48:15     11s]   Identified MBFF number: 0
+[01/15 10:48:15     11s]   Identified SB Latch number: 0
+[01/15 10:48:15     11s]   Identified MB Latch number: 0
+[01/15 10:48:15     11s]   Not identified SBFF number: 16
+[01/15 10:48:15     11s]   Not identified MBFF number: 0
+[01/15 10:48:15     11s]   Not identified SB Latch number: 0
+[01/15 10:48:15     11s]   Not identified MB Latch number: 0
+[01/15 10:48:15     11s]   Number of sequential cells which are not FFs: 32
+[01/15 10:48:15     11s] Total number of combinational cells: 327
+[01/15 10:48:15     11s] Total number of sequential cells: 152
+[01/15 10:48:15     11s] Total number of tristate cells: 10
+[01/15 10:48:15     11s] Total number of level shifter cells: 0
+[01/15 10:48:15     11s] Total number of power gating cells: 0
+[01/15 10:48:15     11s] Total number of isolation cells: 0
+[01/15 10:48:15     11s] Total number of power switch cells: 0
+[01/15 10:48:15     11s] Total number of pulse generator cells: 0
+[01/15 10:48:15     11s] Total number of always on buffers: 0
+[01/15 10:48:15     11s] Total number of retention cells: 0
+[01/15 10:48:15     11s] List of usable buffers: BUFX2 BUFX12 BUFX16 BUFX20 CLKBUFX2 BUFX3 BUFX4 BUFX6 BUFX8 CLKBUFX12 CLKBUFX16 CLKBUFX20 CLKBUFX3 CLKBUFX4 CLKBUFX6 CLKBUFX8
+[01/15 10:48:15     11s] Total number of usable buffers: 16
+[01/15 10:48:15     11s] List of unusable buffers:
+[01/15 10:48:15     11s] Total number of unusable buffers: 0
+[01/15 10:48:15     11s] List of usable inverters: CLKINVX1 CLKINVX2 CLKINVX12 CLKINVX16 CLKINVX20 CLKINVX4 CLKINVX3 CLKINVX6 CLKINVX8 INVX1 INVX2 INVX12 INVX16 INVX20 INVXL INVX3 INVX4 INVX6 INVX8
+[01/15 10:48:15     11s] Total number of usable inverters: 19
+[01/15 10:48:15     11s] List of unusable inverters:
+[01/15 10:48:15     11s] Total number of unusable inverters: 0
+[01/15 10:48:15     11s] List of identified usable delay cells: DLY1X1 DLY1X4 DLY2X1 DLY2X4 DLY3X1 DLY3X4 DLY4X1 DLY4X4
+[01/15 10:48:15     11s] Total number of identified usable delay cells: 8
+[01/15 10:48:15     11s] List of identified unusable delay cells:
+[01/15 10:48:15     11s] Total number of identified unusable delay cells: 0
+[01/15 10:48:15     11s] 
+[01/15 10:48:15     11s] TimeStamp Creating Cell Server ...(0, 1, 1, 1) End ...
+[01/15 10:48:15     11s] 
+[01/15 10:48:15     11s] TimeStamp Deleting Cell Server Begin ...
+[01/15 10:48:15     11s] 
+[01/15 10:48:15     11s] TimeStamp Deleting Cell Server End ...
+[01/15 10:48:15     11s] Ending "Cell type marking" (total cpu=0:00:00.0, real=0:00:00.0, peak res=1464.8M, current mem=1464.8M)
+[01/15 10:48:15     11s] 
+[01/15 10:48:15     11s] TimeStamp Creating Cell Server ...(0, 0, 0, 0) Begin ...
+[01/15 10:48:15     11s] Summary for sequential cells identification: 
+[01/15 10:48:15     11s]   Identified SBFF number: 104
+[01/15 10:48:15     11s]   Identified MBFF number: 0
+[01/15 10:48:15     11s]   Identified SB Latch number: 0
+[01/15 10:48:15     11s]   Identified MB Latch number: 0
+[01/15 10:48:15     11s]   Not identified SBFF number: 16
+[01/15 10:48:15     11s]   Not identified MBFF number: 0
+[01/15 10:48:15     11s]   Not identified SB Latch number: 0
+[01/15 10:48:15     11s]   Not identified MB Latch number: 0
+[01/15 10:48:15     11s]   Number of sequential cells which are not FFs: 32
+[01/15 10:48:15     11s]  Visiting view : analysis_normal_slow_max
+[01/15 10:48:15     11s]    : PowerDomain = none : Weighted F : unweighted  = 37.80 (1.000) with rcCorner = 0
+[01/15 10:48:15     11s]    : PowerDomain = none : Weighted F : unweighted  = 20.10 (1.000) with rcCorner = -1
+[01/15 10:48:15     11s]  Visiting view : analysis_normal_fast_min
+[01/15 10:48:15     11s]    : PowerDomain = none : Weighted F : unweighted  = 9.90 (1.000) with rcCorner = 1
+[01/15 10:48:15     11s]    : PowerDomain = none : Weighted F : unweighted  = 4.50 (1.000) with rcCorner = -1
+[01/15 10:48:15     11s] TLC MultiMap info (StdDelay):
+[01/15 10:48:15     11s]   : fast_min + fast + 1 + no RcCorner := 4.5ps
+[01/15 10:48:15     11s]   : fast_min + fast + 1 + rc_best := 9.9ps
+[01/15 10:48:15     11s]   : slow_max + slow + 1 + no RcCorner := 20.1ps
+[01/15 10:48:15     11s]   : slow_max + slow + 1 + rc_worst := 37.8ps
+[01/15 10:48:15     11s]  Setting StdDelay to: 37.8ps
+[01/15 10:48:15     11s] 
+[01/15 10:48:15     11s] TimeStamp Creating Cell Server ...(0, 0, 0, 0) End ...
+[01/15 10:48:15     11s] 
+[01/15 10:48:15     11s] TimeStamp Deleting Cell Server Begin ...
+[01/15 10:48:15     11s] 
+[01/15 10:48:15     11s] TimeStamp Deleting Cell Server End ...
+[01/15 10:48:15     11s] #% Begin Load MMMC data post ... (date=01/15 10:48:15, mem=1465.5M)
+[01/15 10:48:15     11s] #% End Load MMMC data post ... (date=01/15 10:48:15, total cpu=0:00:00.0, real=0:00:00.0, peak res=1465.5M, current mem=1465.5M)
+[01/15 10:48:15     11s] 
+[01/15 10:48:15     11s] *** Summary of all messages that are not suppressed in this session:
+[01/15 10:48:15     11s] Severity  ID               Count  Summary                                  
+[01/15 10:48:15     11s] WARNING   IMPLF-200            1  Pin '%s' in macro '%s' has no ANTENNAGAT...
+[01/15 10:48:15     11s] WARNING   IMPFP-3961           2  The techSite '%s' has no related standar...
+[01/15 10:48:15     11s] WARNING   IMPEXT-2662          2  Cap table %s does not have the EXTENDED ...
+[01/15 10:48:15     11s] WARNING   TECHLIB-302         20  No function defined for cell '%s'. The c...
+[01/15 10:48:15     11s] *** Message Summary: 25 warning(s), 0 error(s)
+[01/15 10:48:15     11s] 
+[01/15 10:48:15     11s] <CMD> setDesignMode -process 45
+[01/15 10:48:15     11s] ##  Process: 45            (User Set)               
+[01/15 10:48:15     11s] ##     Node: (not set)                           
+[01/15 10:48:15     11s] 
+##  Check design process and node:  
+##  Design tech node is not set.
+
+[01/15 10:48:15     11s] Applying the recommended capacitance filtering threshold values for 45nm process node: total_c_th=0, relative_c_th=1 and coupling_c_th=0.1.
+[01/15 10:48:15     11s] 	These values will be used by all post-route extraction engines, including TQuantus, IQuantus and Quantus QRC extraction.
+[01/15 10:48:15     11s] 	Capacitance filtering mode(-capFilterMode option of the setExtractRCMode) is 'relAndCoup' for all engines.
+[01/15 10:48:15     11s] 	The accuracy mode for postRoute effortLevel low extraction will be set to 'high'.
+[01/15 10:48:15     11s] 	Default value for EffortLevel(-effortLevel option of the setExtractRCMode) in postRoute extraction mode will be 'medium' if Quantus QRC technology file is specified else 'low'.
+[01/15 10:48:15     11s] **ERROR: (IMPSYT-6692):	Invalid return code while executing '/home/cinovador/Downloads/somador_fisico_UPDATE/backend/layout/scripts/layout.tcl' was returned and script processing was stopped. Review the following error in '/home/cinovador/Downloads/somador_fisico_UPDATE/backend/layout/scripts/layout.tcl' then restart.
+[01/15 10:48:15     11s] **ERROR: (IMPSYT-6693):	Error message: /home/cinovador/Downloads/somador_fisico_UPDATE/backend/layout/scripts/layout.tcl: invalid command name "graphical".
+[01/15 10:48:15     11s] <CMD> win
+[01/15 10:48:22     12s] <CMD> gui_select -rect {0.00100 0.02100 1.30300 1.01550}
+[01/15 10:48:26     12s] 
+--------------------------------------------------------------------------------
+Exiting Innovus on Wed Jan 15 10:48:26 2025
+  Total CPU time:     0:00:12
+  Total real time:    0:00:34
+  Peak memory (main): 1481.31MB
+
+[01/15 10:48:26     12s] 
+[01/15 10:48:26     12s] *** Memory Usage v#1 (Current mem = 1700.332M, initial mem = 483.883M) ***
+[01/15 10:48:26     12s] 
+[01/15 10:48:26     12s] *** Summary of all messages that are not suppressed in this session:
+[01/15 10:48:26     12s] Severity  ID               Count  Summary                                  
+[01/15 10:48:26     12s] WARNING   IMPLF-200            1  Pin '%s' in macro '%s' has no ANTENNAGAT...
+[01/15 10:48:26     12s] WARNING   IMPFP-3961           2  The techSite '%s' has no related standar...
+[01/15 10:48:26     12s] WARNING   IMPEXT-2662          2  Cap table %s does not have the EXTENDED ...
+[01/15 10:48:26     12s] ERROR     IMPSYT-6692          1  Invalid return code while executing '%s'...
+[01/15 10:48:26     12s] ERROR     IMPSYT-6693          1  Error message: %s: %s.                   
+[01/15 10:48:26     12s] WARNING   TECHLIB-302         20  No function defined for cell '%s'. The c...
+[01/15 10:48:26     12s] *** Message Summary: 25 warning(s), 2 error(s)
+[01/15 10:48:26     12s] 
+[01/15 10:48:26     12s] --- Ending "Innovus" (totcpu=0:00:12.4, real=0:00:33.0, mem=1700.3M) ---

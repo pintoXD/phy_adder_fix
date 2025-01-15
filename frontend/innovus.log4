@@ -1,0 +1,93 @@
+
+Cadence Innovus(TM) Implementation System.
+Copyright 2021 Cadence Design Systems, Inc. All rights reserved worldwide.
+
+Version:	v21.15-s110_1, built Fri Sep 23 13:08:12 PDT 2022
+Options:	-file /home/cinovador/Downloads/somador_fisico_UPDATE/backend/layout/scripts/layout.tcl 
+Date:		Wed Jan 15 10:37:06 2025
+Host:		cinova05.lesc.ufc.br (x86_64 w/Linux 4.18.0-553.27.1.el8_10.x86_64) (14cores*20cpus*13th Gen Intel(R) Core(TM) i5-13500 24576KB)
+OS:		Rocky Linux release 8.10 (Green Obsidian)
+
+License:
+		[10:37:06.201609] Configured Lic search path (21.01-s002): 5280@192.168.0.10
+
+		invs	Innovus Implementation System	21.1	checkout succeeded
+		8 CPU jobs allowed with the current license(s). Use setMultiCpuUsage to set your required CPU count.
+Change the soft stacksize limit to 0.2%RAM (63 mbytes). Set global soft_stack_size_limit to change the value.
+
+**INFO:  MMMC transition support version v31-84 
+
+<CMD> set_global _enable_mmmc_by_default_flow      $CTE::mmmc_default
+<CMD> suppressMessage ENCEXT-2799
+<CMD> getVersion
+[INFO] Loading PVS 23.11 fill procedures
+Sourcing file "/home/cinovador/Downloads/somador_fisico_UPDATE/backend/layout/scripts/layout.tcl" ...
+<CMD> set defHierChar /
+Set Default Input Pin Transition as 0.1 ps.
+<CMD> set delaycal_input_transition_delay 0.1ps
+<CMD> set fpIsMaxIoHeight 0
+<CMD> set init_design_settop 0
+<CMD> set init_gnd_net VSS
+<CMD> set init_lef_file {/home/tools/cadence/gpdk/gsclib045_svt_v4.4/lan/flow/t1u1/reference_libs/GPDK045/gsclib045_svt_v4.4/gsclib045/lef/gsclib045_tech.lef /home/tools/cadence/gpdk/gsclib045_svt_v4.4/lan/flow/t1u1/reference_libs/GPDK045/gsclib045_svt_v4.4/gsclib045/lef/gsclib045_macro.lef}
+<CMD> set init_mmmc_file ../scripts/somador.view
+<CMD> set init_oa_search_lib {}
+<CMD> set init_pwr_net VDD
+<CMD> set init_verilog ../../synthesis/deliverables/somador.v
+<CMD> init_design
+**ERROR: (IMPSYT-6284):	Failed to open file ../scripts/somador.view for read.
+
+Loading LEF file /home/tools/cadence/gpdk/gsclib045_svt_v4.4/lan/flow/t1u1/reference_libs/GPDK045/gsclib045_svt_v4.4/gsclib045/lef/gsclib045_tech.lef ...
+
+Loading LEF file /home/tools/cadence/gpdk/gsclib045_svt_v4.4/lan/flow/t1u1/reference_libs/GPDK045/gsclib045_svt_v4.4/gsclib045/lef/gsclib045_macro.lef ...
+Set DBUPerIGU to M2 pitch 400.
+**WARN: (IMPLF-200):	Pin 'A' in macro 'ANTENNA' has no ANTENNAGATEAREA value defined. The library data is incomplete and some process antenna rules will not be checked correctly.
+Type 'man IMPLF-200' for more detail.
+
+##  Check design process and node:  
+##  Both design process and tech node are not set.
+
+Loading view definition file from ../scripts/somador.view
+*** End library_loading (cpu=0.00min, real=0.00min, mem=0.0M, fe_cpu=0.17min, fe_real=0.25min, fe_mem=1194.2M) ***
+**ERROR: (IMPSYT-16038):	The specified file '../../synthesis/deliverables/somador.v' could not be found. Check your file system, correct the file name.
+**ERROR: (IMPIMEX-7008):	No netlist files are found.
+**ERROR: (IMPSYT-6692):	Invalid return code while executing '/home/cinovador/Downloads/somador_fisico_UPDATE/backend/layout/scripts/layout.tcl' was returned and script processing was stopped. Review the following error in '/home/cinovador/Downloads/somador_fisico_UPDATE/backend/layout/scripts/layout.tcl' then restart.
+Error info: /home/cinovador/Downloads/somador_fisico_UPDATE/backend/layout/scripts/layout.tcl: 
+    while executing
+"error $msg"
+    (procedure "apply_design" line 34)
+    invoked from within
+"apply_design $loadViewDefinition"
+    (procedure "init_design" line 405)
+    invoked from within
+"init_design"
+    (file "/home/cinovador/Downloads/somador_fisico_UPDATE/backend/layout/scripts/layout.tcl" line 73)
+    invoked from within
+"::se_source_orig /home/cinovador/Downloads/somador_fisico_UPDATE/backend/layout/scripts/layout.tcl"
+    ("uplevel" body line 1)
+    invoked from within
+"uplevel [concat ::se_source_orig $args]"
+    (procedure "source" line 188)
+    invoked from within
+"source /home/cinovador/Downloads/somador_fisico_UPDATE/backend/layout/scripts/layout.tcl"
+    ("uplevel" body line 1)
+    invoked from within
+"uplevel #0 source /home/cinovador/Downloads/somador_fisico_UPDATE/backend/layout/scripts/layout.tcl"
+    ("eval" body line 1)
+    invoked from within
+"eval {uplevel #0 source /home/cinovador/Downloads/somador_fisico_UPDATE/backend/layout/scripts/layout.tcl}"
+    (in namespace inscope "::" script line 1)
+    invoked from within
+"namespace inscope :: eval "uplevel #0 source $fileName"".
+<CMD> win
+
+--------------------------------------------------------------------------------
+Exiting Innovus on Wed Jan 15 10:37:26 2025
+  Total CPU time:     0:00:10
+  Total real time:    0:00:21
+  Peak memory (main): 1025.80MB
+
+
+*** Memory Usage v#1 (Current mem = 1205.094M, initial mem = 483.883M) ***
+*** Message Summary: 1 warning(s), 5 error(s)
+
+--- Ending "Innovus" (totcpu=0:00:10.6, real=0:00:20.0, mem=1205.1M) ---

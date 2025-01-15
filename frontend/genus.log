@@ -1,0 +1,1698 @@
+Cadence Genus(TM) Synthesis Solution.
+Copyright 2021 Cadence Design Systems, Inc. All rights reserved worldwide.
+Cadence and the Cadence logo are registered trademarks and Genus is a trademark
+of Cadence Design Systems, Inc. in the United States and other countries.
+
+Version: 21.10-p002_1, built Fri Aug 20 06:13:13 PDT 2021
+Options: -abort_on_error -lic_startup Genus_Synthesis -lic_startup_options Genus_Physical_Opt -log genus -overwrite -files /home/cinovador/Downloads/somador_fisico_UPDATE/backend/synthesis/scripts/somador.tcl 
+Date:    Wed Jan 15 10:36:15 2025
+Host:    cinova05.lesc.ufc.br (x86_64 w/Linux 4.18.0-553.27.1.el8_10.x86_64) (14cores*20cpus*1physical cpu*13th Gen Intel(R) Core(TM) i5-13500 24576KB) (32333804KB)
+PID:     26195
+OS:      Rocky Linux release 8.10 (Green Obsidian)
+
+Checking out license: Genus_Synthesis
+
+
+***********************************************************************************************************
+***********************************************************************************************************
+
+
+
+Loading tool scripts...
+Finished loading tool scripts (5 seconds elapsed).
+
+Checking out license: Genus_Physical_Opt
+
+#@ Processing -files option
+@genus 1> source /home/cinovador/Downloads/somador_fisico_UPDATE/backend/synthesis/scripts/somador.tcl
+#@ Begin verbose source /home/cinovador/Downloads/somador_fisico_UPDATE/backend/synthesis/scripts/somador.tcl
+@file(somador.tcl) 8: puts "  "
+  
+@file(somador.tcl) 9: puts "  "
+  
+@file(somador.tcl) 10: puts "  "
+  
+@file(somador.tcl) 11: puts "  "
+  
+@file(somador.tcl) 16: set PROJECT_DIR $env(PROJECT_DIR)
+@file(somador.tcl) 17: set TECH_DIR $env(TECH_DIR)
+@file(somador.tcl) 18: set DESIGNS $env(DESIGNS)
+@file(somador.tcl) 19: set HDL_NAME $env(HDL_NAME)
+@file(somador.tcl) 20: set INTERCONNECT_MODE ple
+@file(somador.tcl) 26: set MAIN_CLOCK_NAME clk
+@file(somador.tcl) 27: set MAIN_RST_NAME rst_n
+@file(somador.tcl) 28: set BEST_LIB_OPERATING_CONDITION PVT_1P32V_0C
+@file(somador.tcl) 29: set WORST_LIB_OPERATING_CONDITION PVT_0P9V_125C
+@file(somador.tcl) 30: set period_clk 100.0  ;# (100 ns = 10 MHz) (10 ns = 100 MHz) (2 ns = 500 MHz) (1 ns = 1 GHz)
+@file(somador.tcl) 31: set clk_uncertainty 0.05 ;# ns (“a guess”)
+@file(somador.tcl) 32: set clk_latency 0.10 ;# ns (“a guess”)
+@file(somador.tcl) 33: set in_delay 0.30 ;# ns
+@file(somador.tcl) 34: set out_delay 0.30;#ns
+@file(somador.tcl) 35: set out_load 0.045 ;#pF
+@file(somador.tcl) 36: set slew "146 164 264 252" ;#minimum rise, minimum fall, maximum rise and maximum fall
+@file(somador.tcl) 37: set slew_min_rise 0.146 ;# ns
+@file(somador.tcl) 38: set slew_min_fall 0.164 ;# ns
+@file(somador.tcl) 39: set slew_max_rise 0.264 ;# ns
+@file(somador.tcl) 40: set slew_max_fall 0.252 ;# ns
+@file(somador.tcl) 42: set WORST_LIST {slow_vdd1v0_basicCells.lib}
+@file(somador.tcl) 43: set BEST_LIST {fast_vdd1v2_basicCells.lib}
+@file(somador.tcl) 44: set LEF_LIST {gsclib045_tech.lef gsclib045_macro.lef}
+@file(somador.tcl) 45: set WORST_CAP_LIST ${TECH_DIR}/gpdk045_v_6_0/soce/gpdk045.basic.CapTbl
+@file(somador.tcl) 46: set QRC_LIST ${TECH_DIR}/gpdk045_v_6_0/qrc/rcworst/qrcTechFile
+@file(somador.tcl) 53: source ${PROJECT_DIR}/backend/synthesis/scripts/common/path.tcl
+Sourcing '/home/cinovador/Downloads/somador_fisico_UPDATE/backend/synthesis/scripts/common/path.tcl' (Wed Jan 15 10:36:20 -03 2025)...
+#@ Begin verbose source /home/cinovador/Downloads/somador_fisico_UPDATE/backend/synthesis/scripts/common/path.tcl
+@file(path.tcl) 5: set BACKEND_DIR ${PROJECT_DIR}/backend
+@file(path.tcl) 6: set SYNT_DIR ${BACKEND_DIR}/synthesis
+@file(path.tcl) 7: set SCRIPT_DIR ${SYNT_DIR}/scripts
+@file(path.tcl) 8: set RPT_DIR ${SYNT_DIR}/reports
+@file(path.tcl) 9: set DEV_DIR ${SYNT_DIR}/deliverables
+@file(path.tcl) 10: set LAYOUT_DIR ${BACKEND_DIR}/layout
+@file(path.tcl) 15: set FRONTEND_DIR ${PROJECT_DIR}/frontend
+@file(path.tcl) 16: set OTHERS ""
+@file(path.tcl) 17: lappend FRONTEND_DIR $OTHERS
+@file(path.tcl) 24: set LIB_DIR ${TECH_DIR}/gsclib045_svt_v4.4/lan/flow/t1u1/reference_libs/GPDK045/gsclib045_svt_v4.4/gsclib045/timing
+@file(path.tcl) 36: set LEF_DIR ${TECH_DIR}/gsclib045_svt_v4.4/lan/flow/t1u1/reference_libs/GPDK045/gsclib045_svt_v4.4/gsclib045/lef
+#@ End verbose source /home/cinovador/Downloads/somador_fisico_UPDATE/backend/synthesis/scripts/common/path.tcl
+@file(somador.tcl) 58: source ${SCRIPT_DIR}/common/tech.tcl
+Sourcing '/home/cinovador/Downloads/somador_fisico_UPDATE/backend/synthesis/scripts/common/tech.tcl' (Wed Jan 15 10:36:20 -03 2025)...
+#@ Begin verbose source /home/cinovador/Downloads/somador_fisico_UPDATE/backend/synthesis/scripts/common/tech.tcl
+@file(tech.tcl) 5: create_library_domain {worst best} 
+@file(tech.tcl) 6: get_db library_domains *
+@file(tech.tcl) 12: set_db lib_search_path "${LIB_DIR} ${LEF_DIR}"
+  Setting attribute of root '/': 'lib_search_path' = /home/tools/cadence/gpdk/gsclib045_svt_v4.4/lan/flow/t1u1/reference_libs/GPDK045/gsclib045_svt_v4.4/gsclib045/timing /home/tools/cadence/gpdk/gsclib045_svt_v4.4/lan/flow/t1u1/reference_libs/GPDK045/gsclib045_svt_v4.4/gsclib045/lef
+@file(tech.tcl) 13: set_db [get_db library_domains worst] .library ${WORST_LIST}
+
+Threads Configured:3
+
+  Message Summary for Library slow_vdd1v0_basicCells.lib:
+  *******************************************************
+  Missing a function attribute in the output pin definition. [LBR-518]: 1
+  *******************************************************
+ 
+Info    : Created nominal operating condition. [LBR-412]
+        : Operating condition '_nominal_' was created for the PVT values (1.000000, 0.900000, 125.000000) in library 'slow_vdd1v0_basicCells.lib'.
+        : The nominal operating condition is represented, either by the nominal PVT values specified in the library source (via nom_process,nom_voltage and nom_temperature respectively), or by the default PVT values (1.0,1.0,1.0).
+Warning : Library cell has no output pins defined. [LBR-9]
+        : Library cell 'ANTENNA' must have an output pin.
+        : Add the missing output pin(s), then reload the library. Else the library cell will be marked as timing model i.e. unusable. Timing_model means that the cell does not have any defined function. If there is no output pin, Genus will mark library cell as unusable i.e. the attribute 'usable' will be marked to 'false' on the libcell. Therefore, the cell is not used for mapping and it will not be picked up from the library for synthesis. If you query the attribute 'unusable_reason' on the libcell; result will be: 'Library cell has no output pins.'Note: The message LBR-9 is only for the logical pins and not for the power_ground pins. Genus will depend upon the output function defined in the pin group (output pin) of the cell, to use it for mapping. The pg_pin will not have any function defined.
+Warning : Library cell has no output pins defined. [LBR-9]
+        : Library cell 'ANTENNA' must have an output pin.
+Warning : Library cell has no output pins defined. [LBR-9]
+        : Library cell 'DECAP10' must have an output pin.
+Warning : Library cell has no output pins defined. [LBR-9]
+        : Library cell 'DECAP10' must have an output pin.
+Warning : Library cell has no output pins defined. [LBR-9]
+        : Library cell 'DECAP2' must have an output pin.
+Warning : Library cell has no output pins defined. [LBR-9]
+        : Library cell 'DECAP2' must have an output pin.
+Warning : Library cell has no output pins defined. [LBR-9]
+        : Library cell 'DECAP3' must have an output pin.
+Warning : Library cell has no output pins defined. [LBR-9]
+        : Library cell 'DECAP3' must have an output pin.
+Warning : Library cell has no output pins defined. [LBR-9]
+        : Library cell 'DECAP4' must have an output pin.
+Warning : Library cell has no output pins defined. [LBR-9]
+        : Library cell 'DECAP4' must have an output pin.
+Warning : Library cell has no output pins defined. [LBR-9]
+        : Library cell 'DECAP5' must have an output pin.
+Warning : Library cell has no output pins defined. [LBR-9]
+        : Library cell 'DECAP5' must have an output pin.
+Warning : Library cell has no output pins defined. [LBR-9]
+        : Library cell 'DECAP6' must have an output pin.
+Warning : Library cell has no output pins defined. [LBR-9]
+        : Library cell 'DECAP6' must have an output pin.
+Warning : Library cell has no output pins defined. [LBR-9]
+        : Library cell 'DECAP7' must have an output pin.
+Warning : Library cell has no output pins defined. [LBR-9]
+        : Library cell 'DECAP7' must have an output pin.
+Warning : Library cell has no output pins defined. [LBR-9]
+        : Library cell 'DECAP8' must have an output pin.
+Warning : Library cell has no output pins defined. [LBR-9]
+        : Library cell 'DECAP8' must have an output pin.
+Warning : Library cell has no output pins defined. [LBR-9]
+        : Library cell 'DECAP9' must have an output pin.
+Warning : Library cell has no output pins defined. [LBR-9]
+        : Library cell 'DECAP9' must have an output pin.
+Info    : Set default library domain. [LBR-109]
+        : The default library domain is 'library_domain:worst'.
+  Setting attribute of library_domain 'worst': 'library' = slow_vdd1v0_basicCells.lib
+@file(tech.tcl) 14: set_db [get_db library_domains best] .library ${BEST_LIST}
+
+Threads Configured:3
+
+  Message Summary for Library fast_vdd1v2_basicCells.lib:
+  *******************************************************
+  Missing a function attribute in the output pin definition. [LBR-518]: 1
+  *******************************************************
+ 
+Info    : Created nominal operating condition. [LBR-412]
+        : Operating condition '_nominal_' was created for the PVT values (1.000000, 1.320000, 0.000000) in library 'fast_vdd1v2_basicCells.lib'.
+Warning : Library cell has no output pins defined. [LBR-9]
+        : Library cell 'ANTENNA' must have an output pin.
+Warning : Library cell has no output pins defined. [LBR-9]
+        : Library cell 'ANTENNA' must have an output pin.
+Warning : Library cell has no output pins defined. [LBR-9]
+        : Library cell 'DECAP10' must have an output pin.
+Warning : Library cell has no output pins defined. [LBR-9]
+        : Library cell 'DECAP10' must have an output pin.
+Warning : Library cell has no output pins defined. [LBR-9]
+        : Library cell 'DECAP2' must have an output pin.
+Warning : Library cell has no output pins defined. [LBR-9]
+        : Library cell 'DECAP2' must have an output pin.
+Warning : Library cell has no output pins defined. [LBR-9]
+        : Library cell 'DECAP3' must have an output pin.
+Warning : Library cell has no output pins defined. [LBR-9]
+        : Library cell 'DECAP3' must have an output pin.
+Warning : Library cell has no output pins defined. [LBR-9]
+        : Library cell 'DECAP4' must have an output pin.
+Warning : Library cell has no output pins defined. [LBR-9]
+        : Library cell 'DECAP4' must have an output pin.
+Warning : Library cell has no output pins defined. [LBR-9]
+        : Library cell 'DECAP5' must have an output pin.
+Warning : Library cell has no output pins defined. [LBR-9]
+        : Library cell 'DECAP5' must have an output pin.
+Warning : Library cell has no output pins defined. [LBR-9]
+        : Library cell 'DECAP6' must have an output pin.
+Warning : Library cell has no output pins defined. [LBR-9]
+        : Library cell 'DECAP6' must have an output pin.
+Warning : Library cell has no output pins defined. [LBR-9]
+        : Library cell 'DECAP7' must have an output pin.
+Warning : Library cell has no output pins defined. [LBR-9]
+        : Library cell 'DECAP7' must have an output pin.
+Warning : Library cell has no output pins defined. [LBR-9]
+        : Library cell 'DECAP8' must have an output pin.
+Warning : Library cell has no output pins defined. [LBR-9]
+        : Library cell 'DECAP8' must have an output pin.
+Warning : Library cell has no output pins defined. [LBR-9]
+        : Library cell 'DECAP9' must have an output pin.
+Warning : Library cell has no output pins defined. [LBR-9]
+        : Library cell 'DECAP9' must have an output pin.
+  Setting attribute of library_domain 'best': 'library' = fast_vdd1v2_basicCells.lib
+@file(tech.tcl) 20: get_db [get_db library_domains *worst] .operating_conditions
+@file(tech.tcl) 21: set_db [get_db library_domains *worst] .operating_conditions ${WORST_LIB_OPERATING_CONDITION}
+  Setting attribute of library_domain 'worst': 'operating_conditions' = operating_condition:ls_of_ld_worst/slow_vdd1v0/PVT_0P9V_125C
+@file(tech.tcl) 22: get_db [get_db library_domains *worst] .operating_conditions
+@file(tech.tcl) 24: get_db [get_db library_domains *best] .operating_conditions
+@file(tech.tcl) 25: set_db [get_db library_domains *best] .operating_conditions ${BEST_LIB_OPERATING_CONDITION}
+  Setting attribute of library_domain 'best': 'operating_conditions' = operating_condition:ls_of_ld_best/fast_vdd1v2/PVT_1P32V_0C
+@file(tech.tcl) 26: get_db [get_db library_domains *best] .operating_conditions
+@file(tech.tcl) 28: get_db [get_db library_domain *worst] .default
+@file(tech.tcl) 29: get_db [get_db library_domain *best] .default 
+@file(tech.tcl) 31: get_db [vfind /libraries -library_domain worst] .active_operating_conditions
+  Library has 324 usable logic and 128 usable sequential lib-cells.
+  Library has 324 usable logic and 128 usable sequential lib-cells.
+@file(tech.tcl) 32: get_db [vfind /libraries -library_domain best] .active_operating_conditions 
+@file(tech.tcl) 44: set_db lef_library ${LEF_LIST}
+Info    : Via with no resistance will have a value of '0.0' assigned for resistance value. [PHYS-129]
+        : Via 'M2_M1_HV' has no resistance value.
+        : If this is the expected behavior, this message can be ignored.
+Info    : Via with no resistance will have a value of '0.0' assigned for resistance value. [PHYS-129]
+        : Via 'M2_M1_VV' has no resistance value.
+Info    : Via with no resistance will have a value of '0.0' assigned for resistance value. [PHYS-129]
+        : Via 'M2_M1_VH' has no resistance value.
+Info    : Via with no resistance will have a value of '0.0' assigned for resistance value. [PHYS-129]
+        : Via 'M2_M1_HH' has no resistance value.
+Info    : Via with no resistance will have a value of '0.0' assigned for resistance value. [PHYS-129]
+        : Via 'M2_M1_2x1_HV_E' has no resistance value.
+Info    : Via with no resistance will have a value of '0.0' assigned for resistance value. [PHYS-129]
+        : Via 'M2_M1_2x1_HV_W' has no resistance value.
+Info    : Via with no resistance will have a value of '0.0' assigned for resistance value. [PHYS-129]
+        : Via 'M2_M1_1x2_HV_N' has no resistance value.
+Info    : Via with no resistance will have a value of '0.0' assigned for resistance value. [PHYS-129]
+        : Via 'M2_M1_1x2_HV_S' has no resistance value.
+Info    : Via with no resistance will have a value of '0.0' assigned for resistance value. [PHYS-129]
+        : Via 'M3_M2_VH' has no resistance value.
+Info    : Via with no resistance will have a value of '0.0' assigned for resistance value. [PHYS-129]
+        : Via 'M3_M2_HH' has no resistance value.
+Info    : Via with no resistance will have a value of '0.0' assigned for resistance value. [PHYS-129]
+        : Via 'M3_M2_HV' has no resistance value.
+Info    : Via with no resistance will have a value of '0.0' assigned for resistance value. [PHYS-129]
+        : Via 'M3_M2_VV' has no resistance value.
+Info    : Via with no resistance will have a value of '0.0' assigned for resistance value. [PHYS-129]
+        : Via 'M3_M2_M_NH' has no resistance value.
+Info    : Via with no resistance will have a value of '0.0' assigned for resistance value. [PHYS-129]
+        : Via 'M3_M2_M_SH' has no resistance value.
+Info    : Via with no resistance will have a value of '0.0' assigned for resistance value. [PHYS-129]
+        : Via 'M3_M2_2x1_VH_E' has no resistance value.
+Info    : Via with no resistance will have a value of '0.0' assigned for resistance value. [PHYS-129]
+        : Via 'M3_M2_2x1_VH_W' has no resistance value.
+Info    : Via with no resistance will have a value of '0.0' assigned for resistance value. [PHYS-129]
+        : Via 'M3_M2_1x2_VH_N' has no resistance value.
+Info    : Via with no resistance will have a value of '0.0' assigned for resistance value. [PHYS-129]
+        : Via 'M3_M2_1x2_VH_S' has no resistance value.
+Info    : Via with no resistance will have a value of '0.0' assigned for resistance value. [PHYS-129]
+        : Via 'M4_M3_HV' has no resistance value.
+Info    : Via with no resistance will have a value of '0.0' assigned for resistance value. [PHYS-129]
+        : Via 'M4_M3_VV' has no resistance value.
+
+  According to lef_library, there are total 11 routing layers [ V(5) / H(6) ]
+
+Warning : Physical cell not defined in library. [PHYS-279]
+        : The physical (LEF) cell DFF2RX1 cannot be found in library.
+        : Ensure that the proper library files are available and have been imported.
+Warning : Physical cell not defined in library. [PHYS-279]
+        : The physical (LEF) cell DFF2RX2 cannot be found in library.
+Warning : Physical cell not defined in library. [PHYS-279]
+        : The physical (LEF) cell DFF2X1 cannot be found in library.
+Warning : Physical cell not defined in library. [PHYS-279]
+        : The physical (LEF) cell DFF2X2 cannot be found in library.
+Warning : Physical cell not defined in library. [PHYS-279]
+        : The physical (LEF) cell DFF4RX1 cannot be found in library.
+Warning : Physical cell not defined in library. [PHYS-279]
+        : The physical (LEF) cell DFF4RX2 cannot be found in library.
+Warning : Physical cell not defined in library. [PHYS-279]
+        : The physical (LEF) cell DFF4X1 cannot be found in library.
+Warning : Physical cell not defined in library. [PHYS-279]
+        : The physical (LEF) cell DFF4X2 cannot be found in library.
+Warning : Physical cell not defined in library. [PHYS-279]
+        : The physical (LEF) cell FILL1 cannot be found in library.
+Warning : Physical cell not defined in library. [PHYS-279]
+        : The physical (LEF) cell FILL16 cannot be found in library.
+Warning : Physical cell not defined in library. [PHYS-279]
+        : The physical (LEF) cell FILL2 cannot be found in library.
+Warning : Physical cell not defined in library. [PHYS-279]
+        : The physical (LEF) cell FILL32 cannot be found in library.
+Warning : Physical cell not defined in library. [PHYS-279]
+        : The physical (LEF) cell FILL4 cannot be found in library.
+Warning : Physical cell not defined in library. [PHYS-279]
+        : The physical (LEF) cell FILL64 cannot be found in library.
+Warning : Physical cell not defined in library. [PHYS-279]
+        : The physical (LEF) cell FILL8 cannot be found in library.
+Warning : Physical cell not defined in library. [PHYS-279]
+        : The physical (LEF) cell FSWNX1 cannot be found in library.
+Warning : Physical cell not defined in library. [PHYS-279]
+        : The physical (LEF) cell FSWX1 cannot be found in library.
+Warning : Physical cell not defined in library. [PHYS-279]
+        : The physical (LEF) cell HSWDNX1 cannot be found in library.
+Warning : Physical cell not defined in library. [PHYS-279]
+        : The physical (LEF) cell HSWDX1 cannot be found in library.
+Warning : Physical cell not defined in library. [PHYS-279]
+        : The physical (LEF) cell HSWNX1 cannot be found in library.
+  Setting attribute of root '/': 'lef_library' = /home/tools/cadence/gpdk/gsclib045_svt_v4.4/lan/flow/t1u1/reference_libs/GPDK045/gsclib045_svt_v4.4/gsclib045/lef/gsclib045_tech.lef /home/tools/cadence/gpdk/gsclib045_svt_v4.4/lan/flow/t1u1/reference_libs/GPDK045/gsclib045_svt_v4.4/gsclib045/lef/gsclib045_macro.lef
+@file(tech.tcl) 52: set_db qrc_tech_file ${QRC_LIST}
+
+  According to qrc_tech_file, there are total 11 routing layers [ V(5) / H(6) ]
+
+  Setting attribute of root '/': 'qrc_tech_file' = /home/tools/cadence/gpdk/gpdk045_v_6_0/qrc/rcworst/qrcTechFile
+@file(tech.tcl) 56: get_db interconnect_mode
+@file(tech.tcl) 57: set_db interconnect_mode ple ;# global
+  Setting attribute of root '/': 'interconnect_mode' = ple
+@file(tech.tcl) 67: get_lib_cells
+@file(tech.tcl) 68: get_db lib_cells *SDFF*
+@file(tech.tcl) 69: get_db base_cell:SDFFRHQX1 .dont_use
+@file(tech.tcl) 70: set_db base_cell:SDFFRHQX1 .dont_use true
+  Setting attribute of base_cell 'SDFFRHQX1': 'dont_use' = true
+@file(tech.tcl) 71: foreach lc [get_db base_cells -if {.name == "SDFF*"}] {
+  get_db $lc .dont_use
+  set_db $lc .dont_use true
+}
+  Setting attribute of base_cell 'SDFFHQX1': 'dont_use' = true
+  Setting attribute of base_cell 'SDFFHQX2': 'dont_use' = true
+  Setting attribute of base_cell 'SDFFHQX4': 'dont_use' = true
+  Setting attribute of base_cell 'SDFFHQX8': 'dont_use' = true
+  Setting attribute of base_cell 'SDFFNSRX1': 'dont_use' = true
+  Setting attribute of base_cell 'SDFFNSRX2': 'dont_use' = true
+  Setting attribute of base_cell 'SDFFNSRX4': 'dont_use' = true
+  Setting attribute of base_cell 'SDFFNSRXL': 'dont_use' = true
+  Setting attribute of base_cell 'SDFFQX1': 'dont_use' = true
+  Setting attribute of base_cell 'SDFFQX2': 'dont_use' = true
+  Setting attribute of base_cell 'SDFFQX4': 'dont_use' = true
+  Setting attribute of base_cell 'SDFFQXL': 'dont_use' = true
+  Setting attribute of base_cell 'SDFFRHQX1': 'dont_use' = true
+  Setting attribute of base_cell 'SDFFRHQX2': 'dont_use' = true
+  Setting attribute of base_cell 'SDFFRHQX4': 'dont_use' = true
+  Setting attribute of base_cell 'SDFFRHQX8': 'dont_use' = true
+  Setting attribute of base_cell 'SDFFRX1': 'dont_use' = true
+  Setting attribute of base_cell 'SDFFRX2': 'dont_use' = true
+  Setting attribute of base_cell 'SDFFRX4': 'dont_use' = true
+  Setting attribute of base_cell 'SDFFRXL': 'dont_use' = true
+  Setting attribute of base_cell 'SDFFSHQX1': 'dont_use' = true
+  Setting attribute of base_cell 'SDFFSHQX2': 'dont_use' = true
+  Setting attribute of base_cell 'SDFFSHQX4': 'dont_use' = true
+  Setting attribute of base_cell 'SDFFSHQX8': 'dont_use' = true
+  Setting attribute of base_cell 'SDFFSRHQX1': 'dont_use' = true
+  Setting attribute of base_cell 'SDFFSRHQX2': 'dont_use' = true
+  Setting attribute of base_cell 'SDFFSRHQX4': 'dont_use' = true
+  Setting attribute of base_cell 'SDFFSRHQX8': 'dont_use' = true
+  Setting attribute of base_cell 'SDFFSRX1': 'dont_use' = true
+  Setting attribute of base_cell 'SDFFSRX2': 'dont_use' = true
+  Setting attribute of base_cell 'SDFFSRX4': 'dont_use' = true
+  Setting attribute of base_cell 'SDFFSRXL': 'dont_use' = true
+  Setting attribute of base_cell 'SDFFSX1': 'dont_use' = true
+  Setting attribute of base_cell 'SDFFSX2': 'dont_use' = true
+  Setting attribute of base_cell 'SDFFSX4': 'dont_use' = true
+  Setting attribute of base_cell 'SDFFSXL': 'dont_use' = true
+  Setting attribute of base_cell 'SDFFTRX1': 'dont_use' = true
+  Setting attribute of base_cell 'SDFFTRX2': 'dont_use' = true
+  Setting attribute of base_cell 'SDFFTRX4': 'dont_use' = true
+  Setting attribute of base_cell 'SDFFTRXL': 'dont_use' = true
+  Setting attribute of base_cell 'SDFFX1': 'dont_use' = true
+  Setting attribute of base_cell 'SDFFX2': 'dont_use' = true
+  Setting attribute of base_cell 'SDFFX4': 'dont_use' = true
+  Setting attribute of base_cell 'SDFFXL': 'dont_use' = true
+  Setting attribute of base_cell 'SDFF2RX1': 'dont_use' = true
+  Setting attribute of base_cell 'SDFF2RX2': 'dont_use' = true
+  Setting attribute of base_cell 'SDFF4RX1': 'dont_use' = true
+  Setting attribute of base_cell 'SDFF4RX2': 'dont_use' = true
+@file(tech.tcl) 77: foreach lc [get_db base_cells -if {.name == "TLATS*"}] {
+  get_db $lc .dont_use
+  set_db $lc .dont_use true
+}
+  Setting attribute of base_cell 'TLATSRX1': 'dont_use' = true
+  Setting attribute of base_cell 'TLATSRX2': 'dont_use' = true
+  Setting attribute of base_cell 'TLATSRX4': 'dont_use' = true
+  Setting attribute of base_cell 'TLATSRXL': 'dont_use' = true
+@file(tech.tcl) 88: get_db [get_db library_sets *worst] .libraries
+@file(tech.tcl) 89: get_db [get_db library_sets *best] .libraries
+@file(tech.tcl) 91: get_db [get_db library_sets *worst] .libraries.lib_cells
+@file(tech.tcl) 92: get_db [get_db library_sets *best] .libraries.lib_cells
+@file(tech.tcl) 94: get_db [get_db [get_db library_sets *worst] .libraries *slow_vdd1v0] .lib_cells
+@file(tech.tcl) 95: get_db [get_db [get_db library_sets *best] .libraries *fast_vdd1v2] .lib_cells 
+@file(tech.tcl) 97: get_db [get_db library_sets *worst] .libraries.lib_cells -regexp XOR
+@file(tech.tcl) 98: get_db [get_db library_sets *best] .libraries.lib_cells -regexp XOR
+@file(tech.tcl) 100: get_db [get_db [get_db library_sets *worst] .libraries.lib_cells -regexp CLKXOR2X1] .*
+Object: lib_cell:ls_of_ld_worst/slow_vdd1v0/CLKXOR2X1
+  area:                  2.736
+  area_multiplier:       1.0
+  async_clear_pins:      {}
+  async_preset_pins:     {}
+  avoid:                 false
+  backup_power_pins:     {}
+  base_cell:             base_cell:CLKXOR2X1
+  base_name:             CLKXOR2X1
+  bbox:                  {0.0 0.0 1.6 1.71}
+  bit_width:             1
+  cell_delay_multiplier:  1.0
+  cell_min_delay_multiplier:  1.0
+  clock_gating_integrated_cell:  {}
+  clock_pins:            {}
+  combinational:         true
+  congestion_avoid:      false
+  constraint_multiplier:  1.0
+  data_pins:             {}
+  dont_touch:            false
+  dont_use:              false
+  escaped_name:          ls_of_ld_worst/slow_vdd1v0/CLKXOR2X1
+  failure_probability:   0.0
+  has_non_seq_setup_arc:  false
+  internal_power:        no_value
+  is_always_on:          false
+  is_black_box:          false
+  is_buffer:             false
+  is_clock_isolation_cell:  false
+  is_combinational:      true
+  is_dummy_scmr_iw_cell:  false
+  is_fall_edge_triggered:  false
+  is_fixed_mask:         false
+  is_flop:               false
+  is_inferred_macro:     false
+  is_integrated_clock_gating:  false
+  is_interface_timing:   false
+  is_inverter:           false
+  is_isolation_cell:     false
+  is_latch:              false
+  is_level_shifter:      false
+  is_macro:              false
+  is_master_slave_flop:  false
+  is_master_slave_lssd_flop:  false
+  is_memory:             false
+  is_negative_level_sensitive:  false
+  is_pad:                false
+  is_pll:                false
+  is_positive_level_sensitive:  false
+  is_power_switch:       false
+  is_retention:          false
+  is_rise_edge_triggered:  false
+  is_sequential:         false
+  is_timing_model:       false
+  is_tristate:           false
+  is_usable:             true
+  keep_as_physical:      false
+  latch_enable:          {}
+  latch_enable_pins:     {}
+  leakage_power:         0.0
+  leakage_scale_factor:  1.0
+  left_padding:          0
+  level_shifter_direction:  {}
+  level_shifter_type:    {}
+  level_shifter_valid_location:  {}
+  lib_arcs:              NC
+  lib_pins:              NC
+  liberty_attributes:    area 2.736 
+  library:               library:ls_of_ld_worst/slow_vdd1v0
+  master_physical_variant_cell:  {}
+  max_ground_input_voltage:  0.0
+  max_ground_output_voltage:  0.0
+  max_input_voltage:     0.0
+  max_output_voltage:    0.0
+  min_ground_input_voltage:  0.0
+  min_ground_output_voltage:  0.0
+  min_input_voltage:     0.0
+  min_output_voltage:    0.0
+  mode_definition:       NC
+  name:                  ls_of_ld_worst/slow_vdd1v0/CLKXOR2X1
+  obj_type:              lib_cell
+  pg_lib_pins:           NC
+  physical_variant_cells:  {}
+  power_gating_cell_type:  {}
+  preserve:              false
+  preserve_avoid:        false
+  primary_power:         {}
+  required_condition:    {}
+  right_padding:         0
+  scan_enable_pins:      {}
+  scan_in_pins:          {}
+  scan_out:              {}
+  scan_out_pins:         {}
+  seq_functions:         NC
+  sequential:            false
+  short:                 {}
+  std_cell_main_rail_pin:  pg_lib_pin:ls_of_ld_worst/slow_vdd1v0/CLKXOR2X1/VDD
+  switch_off_enables:    {}
+  switched_power:        {}
+  symmetry:              xy
+  sync_clear_pins:       {}
+  sync_enable_pins:      {}
+  sync_preset_pins:      {}
+  timing_model_reason:   {}
+  timing_model_type:     {}
+  tristate:              false
+  type_changed_pin_names:  {}
+  unusable_reason:       {}
+  usable_flop:           false
+  usable_latch:          false
+#@ End verbose source /home/cinovador/Downloads/somador_fisico_UPDATE/backend/synthesis/scripts/common/tech.tcl
+@file(somador.tcl) 63: set_db init_hdl_search_path "${DEV_DIR} ${FRONTEND_DIR}"
+  Setting attribute of root '/': 'init_hdl_search_path' = /home/cinovador/Downloads/somador_fisico_UPDATE/backend/synthesis/deliverables /home/cinovador/Downloads/somador_fisico_UPDATE/frontend {}
+@file(somador.tcl) 64: set rtl_files ${DESIGNS}.vhd
+@file(somador.tcl) 65: read_hdl -language vhdl $rtl_files
+@file(somador.tcl) 71: elaborate ${HDL_NAME}
+Info    : Elaborating Design. [ELAB-1]
+        : Elaborating top-level block 'somador' from file '/home/cinovador/Downloads/somador_fisico_UPDATE/frontend/somador.vhd'.
+Info    : Binding to architecture. [ELAB-5]
+        : Elaborating architecture 'behavioral' for entity 'somador'.
+Warning : Using default parameter value for module elaboration. [CDFG-818]
+        : Elaborating block 'somador' with default parameters value.
+Info    : Done Elaborating Design. [ELAB-3]
+        : Done elaborating 'somador'.
+Checking for analog nets...
+Check completed for analog nets.
+Checking for source RTL...
+Check completed for source RTL.
+Running Unified Mux Engine Tricks...
+Completed Unified Mux Engine Tricks
+--------------------------------------------------------
+| Trick             | Accepts | Rejects | Runtime (ms) | 
+--------------------------------------------------------
+| ume_constant_bmux |       0 |       0 |         0.00 | 
+--------------------------------------------------------
+Starting clip mux common data inputs [v1.0] (stage: post_elab, startdef: somador, recur: true)
+Completed clip mux common data inputs (accepts: 0, rejects: 0, runtime: 0.000s)
+Starting clip the non-user hierarchies [v2.0] (stage: post_elab, startdef: somador, recur: true)
+Completed clip the non-user hierarchies (accepts: 0, rejects: 0, runtime: 0.000s)
+UM:   flow.cputime  flow.realtime  timing.setup.tns  timing.setup.wns  snapshot
+UM:*                                                                   elaborate
+@file(somador.tcl) 72: set_top_module ${HDL_NAME}
+@file(somador.tcl) 73: check_design -unresolved ${HDL_NAME}
+
+
+ 	 Check Design Report (c)
+	 ------------------- 
+
+  Unresolved References & Empty Modules
+  ------------------------------------- 
+No unresolved references in design 'somador'
+
+No empty modules in design 'somador'
+
+  Done Checking the design.
+@file(somador.tcl) 74: get_db current_design
+@file(somador.tcl) 75: check_library
+============================================================
+  Generated by:           Genus(TM) Synthesis Solution 21.10-p002_1
+  Generated on:           Jan 15 2025  10:36:22 am
+  Module:                 somador
+  Library domain:         worst
+    Domain index:         0
+    Technology library:   slow_vdd1v0 1.0
+  Library domain:         best
+    Domain index:         1
+    Technology library:   fast_vdd1v2 1.0
+  Operating conditions:   PVT_0P9V_125C 
+  Operating conditions:   PVT_1P32V_0C 
+  Interconnect mode:      global
+  Area mode:              physical library
+============================================================
+
+                                                                              
+==============================================================================
+Library Domain   Total cells   LS cell   ISO cell   Combo (LS+ISO)   SR Flops 
+------------------------------------------------------------------------------
+best(1.32)       426           0         0          0                0        
+worst(0.9)       426           0         0          0                0        
+------------------------------------------------------------------------------
+
+Unusable libcells
+=================
+                                                                              
+==============================================================================
+Library Domain   Total cells   LS cell   ISO cell   Combo (LS+ISO)   SR Flops 
+------------------------------------------------------------------------------
+best(1.32)       157           0         0          0                0        
+worst(0.9)       157           0         0          0                0        
+------------------------------------------------------------------------------
+@file(somador.tcl) 81: read_sdc ${BACKEND_DIR}/synthesis/constraints/${HDL_NAME}.sdc
+Statistics for commands executed by read_sdc:
+ "all_inputs"               - successful      5 , failed      0 (runtime  0.00)
+ "all_outputs"              - successful      2 , failed      0 (runtime  0.00)
+ "create_clock"             - successful      1 , failed      0 (runtime  0.00)
+ "current_design"           - successful      1 , failed      0 (runtime  0.00)
+ "get_clocks"               - successful      4 , failed      0 (runtime  0.00)
+ "get_nets"                 - successful      2 , failed      0 (runtime  0.00)
+ "get_ports"                - successful      7 , failed      0 (runtime  0.00)
+ "remove_from_collection"   - successful      5 , failed      0 (runtime  0.00)
+ "set_clock_latency"        - successful      1 , failed      0 (runtime  0.00)
+ "set_clock_uncertainty"    - successful      1 , failed      0 (runtime  0.00)
+ "set_ideal_net"            - successful      2 , failed      0 (runtime  0.00)
+ "set_input_delay"          - successful      1 , failed      0 (runtime  0.00)
+ "set_input_transition"     - successful      4 , failed      0 (runtime  0.00)
+ "set_load"                 - successful      1 , failed      0 (runtime  0.00)
+ "set_output_delay"         - successful      1 , failed      0 (runtime  0.00)
+read_sdc completed in 00:00:00 (hh:mm:ss)
+@file(somador.tcl) 82: report timing -lint
+============================================================
+  Generated by:           Genus(TM) Synthesis Solution 21.10-p002_1
+  Generated on:           Jan 15 2025  10:36:22 am
+  Module:                 somador
+  Library domain:         worst
+    Domain index:         0
+    Technology library:   slow_vdd1v0 1.0
+  Library domain:         best
+    Domain index:         1
+    Technology library:   fast_vdd1v2 1.0
+  Operating conditions:   PVT_0P9V_125C 
+  Operating conditions:   PVT_1P32V_0C 
+  Interconnect mode:      global
+  Area mode:              physical library
+============================================================
+
+
+Lint summary
+ Unconnected/logic driven clocks                                  0
+ Sequential data pins driven by a clock signal                    0
+ Sequential clock pins without clock waveform                     0
+ Sequential clock pins with multiple clock waveforms              0
+ Generated clocks without clock waveform                          0
+ Generated clocks with incompatible options                       0
+ Generated clocks with multi-master clock                         0
+ Paths constrained with different clocks                          0
+ Loop-breaking cells for combinational feedback                   0
+ Nets with multiple drivers                                       0
+ Timing exceptions with no effect                                 0
+ Suspicious multi_cycle exceptions                                0
+ Pins/ports with conflicting case constants                       0
+ Inputs without clocked external delays                           0
+ Outputs without clocked external delays                          0
+ Inputs without external driver/transition                        0
+ Outputs without external load                                    0
+ Exceptions with invalid timing start-/endpoints                  0
+
+                                                  Total:          0
+@file(somador.tcl) 88: set_db auto_ungroup none ;# (none|both) ungrouping will not be performed
+  Setting attribute of root '/': 'auto_ungroup' = none
+@file(somador.tcl) 93: syn_generic ${HDL_NAME}
+##Generic Timing Info for library domain: worst typical gate delay: 152.5 ps std_slew: 18.2 ps std_load: 1.0 fF
+Starting mux data reorder optimization [v1.0] (stage: pre_to_gen_setup, startdef: somador, recur: true)
+Completed mux data reorder optimization (accepts: 0, rejects: 0, runtime: 0.000s)
+Current PLE settings:
+
+Aspect ratio        : 1.000
+Shrink factor       : 1.000
+Scale of res/length : 1.000
+Scale of cap/length : 1.000
+Net derating factor : 1.000
+Thermal factor      : 1.324
+Via Resistance      : 0.600 ohm (from qrc_tech_file)
+Site size           : 1.910 um (from lef [tech+cell])
+
+                                    Capacitance  
+   Layer                             / Length         Data source:
+ Name        Direction Utilization  (pF/micron)       qrc_tech_file
+-------------------------------------------------
+metal1_conn      H         0.00        0.000367  
+metal2_conn      V         1.00        0.000317  
+metal3_conn      H         1.00        0.000315  
+metal4_conn      V         1.00        0.000317  
+metal5_conn      H         1.00        0.000317  
+metal6_conn      V         1.00        0.000318  
+metal7_conn      H         1.00        0.000318  
+metal8_conn      V         1.00        0.000315  
+metal9_conn      H         1.00        0.001752  
+metal10_conn     V         1.00        0.000854  
+metal11_conn     H         1.00        0.000739  
+
+                                     Resistance   
+   Layer                              / Length         Data source:
+ Name        Direction Utilization  (ohm/micron)       qrc_tech_file
+--------------------------------------------------
+metal1_conn      H         0.00         1.900028  
+metal2_conn      V         1.00         1.183743  
+metal3_conn      H         1.00         1.183743  
+metal4_conn      V         1.00         1.183743  
+metal5_conn      H         1.00         1.183743  
+metal6_conn      V         1.00         1.183743  
+metal7_conn      H         1.00         1.183743  
+metal8_conn      V         1.00         0.432387  
+metal9_conn      H         1.00         0.432387  
+metal10_conn     V         1.00         0.157232  
+metal11_conn     H         1.00         0.158932  
+
+                                         Area     
+   Layer                               / Length        Data source:
+ Name        Direction Utilization     (micron)        lef_library
+--------------------------------------------------
+Metal1           H         0.00         0.060000  
+Metal2           V         1.00         0.080000  
+Metal3           H         1.00         0.080000  
+Metal4           V         1.00         0.080000  
+Metal5           H         1.00         0.080000  
+Metal6           V         1.00         0.080000  
+Metal7           H         1.00         0.080000  
+Metal8           V         1.00         0.080000  
+Metal9           H         1.00         0.080000  
+Metal10          V         1.00         0.220000  
+Metal11          H         1.00         0.220000  
+
+Info    : Synthesizing. [SYNTH-1]
+        : Synthesizing 'somador' to generic gates using 'medium' effort.
+PBS_Generic-Start - Elapsed_Time 0, CPU_Time 0.0
+stamp 'PBS_Generic-Start' being created for table 'pbs_debug'
+
+  Total Time (Wall) |  Stage Time (Wall)  |   % (Wall)   |    Date - Time     |  Memory   | Stage
+--------------------+---------------------+--------------+--------------------+-----------+----------------------
+ 00:00:05(00:00:04) |  00:00:00(00:00:00) |   0.0(  0.0) |   10:36:22 (Jan15) |  414.4 MB | PBS_Generic-Start
+--------------------+---------------------+--------------+--------------------+-----------+----------------------
+Number of threads: 8 * 1   (id: pbs_debug, time_info v1.57)
+Info: (*N*) indicates data that was populated from previously saved time_info database
+Info: CPU time includes time of parent + longest thread
+TNS Restructuring config: no_value at stage: generic applied.
+Info    : Partition Based Synthesis execution skipped. [PHYS-752]
+        : Design size is less than the partition size '100000' for distributed generic optimization to kick in.
+Starting mux data reorder optimization [v1.0] (stage: pre_to_gen_setup, startdef: somador, recur: true)
+Completed mux data reorder optimization (accepts: 0, rejects: 0, runtime: 0.000s)
+Starting mux data reorder optimization [v1.0] (stage: post_to_gen_setup, startdef: somador, recur: true)
+Completed mux data reorder optimization (accepts: 0, rejects: 0, runtime: 0.000s)
+Current PLE settings:
+
+Aspect ratio        : 1.000
+Shrink factor       : 1.000
+Scale of res/length : 1.000
+Scale of cap/length : 1.000
+Net derating factor : 1.000
+Thermal factor      : 1.324
+Via Resistance      : 0.600 ohm (from qrc_tech_file)
+Site size           : 1.910 um (from lef [tech+cell])
+
+                                    Capacitance  
+   Layer                             / Length         Data source:
+ Name        Direction Utilization  (pF/micron)       qrc_tech_file
+-------------------------------------------------
+metal1_conn      H         0.00        0.000367  
+metal2_conn      V         1.00        0.000317  
+metal3_conn      H         1.00        0.000315  
+metal4_conn      V         1.00        0.000317  
+metal5_conn      H         1.00        0.000317  
+metal6_conn      V         1.00        0.000318  
+metal7_conn      H         1.00        0.000318  
+metal8_conn      V         1.00        0.000315  
+metal9_conn      H         1.00        0.001752  
+metal10_conn     V         1.00        0.000854  
+metal11_conn     H         1.00        0.000739  
+
+                                     Resistance   
+   Layer                              / Length         Data source:
+ Name        Direction Utilization  (ohm/micron)       qrc_tech_file
+--------------------------------------------------
+metal1_conn      H         0.00         1.900028  
+metal2_conn      V         1.00         1.183743  
+metal3_conn      H         1.00         1.183743  
+metal4_conn      V         1.00         1.183743  
+metal5_conn      H         1.00         1.183743  
+metal6_conn      V         1.00         1.183743  
+metal7_conn      H         1.00         1.183743  
+metal8_conn      V         1.00         0.432387  
+metal9_conn      H         1.00         0.432387  
+metal10_conn     V         1.00         0.157232  
+metal11_conn     H         1.00         0.158932  
+
+                                         Area     
+   Layer                               / Length        Data source:
+ Name        Direction Utilization     (micron)        lef_library
+--------------------------------------------------
+Metal1           H         0.00         0.060000  
+Metal2           V         1.00         0.080000  
+Metal3           H         1.00         0.080000  
+Metal4           V         1.00         0.080000  
+Metal5           H         1.00         0.080000  
+Metal6           V         1.00         0.080000  
+Metal7           H         1.00         0.080000  
+Metal8           V         1.00         0.080000  
+Metal9           H         1.00         0.080000  
+Metal10          V         1.00         0.220000  
+Metal11          H         1.00         0.220000  
+
+Running Unified Mux Engine Tricks...
+Completed Unified Mux Engine Tricks
+--------------------------------------------
+| Trick | Accepts | Rejects | Runtime (ms) | 
+--------------------------------------------
+--------------------------------------------
+Starting datapath recasting [v1.0] (stage: pre_rtlopt, startdef: somador, recur: true)
+Completed datapath recasting (accepts: 0, rejects: 0, runtime: 0.000s)
+Starting infer macro optimization [v1.0] (stage: pre_rtlopt, startdef: somador, recur: true)
+Completed infer macro optimization (accepts: 0, rejects: 0, runtime: 0.000s)
+Starting decode mux sandwich optimization [v2.0] (stage: pre_rtlopt, startdef: somador, recur: true)
+Completed decode mux sandwich optimization (accepts: 0, rejects: 0, runtime: 0.000s)
+Starting decode mux optimization [v1.0] (stage: pre_rtlopt, startdef: somador, recur: true)
+Completed decode mux optimization (accepts: 0, rejects: 0, runtime: 0.000s)
+Starting chop wide muxes [v1.0] (stage: pre_rtlopt, startdef: somador, recur: true)
+Completed chop wide muxes (accepts: 0, rejects: 0, runtime: 0.000s)
+Starting common data mux cascade opt [v1.0] (stage: pre_rtlopt, startdef: somador, recur: true)
+Completed common data mux cascade opt (accepts: 0, rejects: 0, runtime: 0.000s)
+Starting mux input consolidation [v1.0] (stage: pre_rtlopt, startdef: somador, recur: true)
+Completed mux input consolidation (accepts: 0, rejects: 0, runtime: 0.000s)
+Starting priority mux optimization [v1.0] (stage: pre_rtlopt, startdef: somador, recur: true)
+Completed priority mux optimization (accepts: 0, rejects: 0, runtime: 0.002s)
+Starting constant-data mux optimization [v1.0] (stage: pre_rtlopt, startdef: somador, recur: true)
+Completed constant-data mux optimization (accepts: 0, rejects: 0, runtime: 0.000s)
+Starting chain-to-tree inequality transform [v2.0] (stage: pre_rtlopt, startdef: somador, recur: true)
+Completed chain-to-tree inequality transform (accepts: 0, rejects: 0, runtime: 0.000s)
+Starting reconvergence optimization [v1.0] (stage: pre_rtlopt, startdef: somador, recur: true)
+Completed reconvergence optimization (accepts: 0, rejects: 0, runtime: 0.000s)
+Starting logic restructure optimization [v1.0] (stage: pre_rtlopt, startdef: somador, recur: true)
+Completed logic restructure optimization (accepts: 0, rejects: 0, runtime: 0.000s)
+Starting common select mux optimization [v1.0] (stage: pre_rtlopt, startdef: somador, recur: true)
+Completed common select mux optimization (accepts: 0, rejects: 0, runtime: 0.000s)
+Starting identity transform [v3.0] (stage: pre_rtlopt, startdef: somador, recur: true)
+Completed identity transform (accepts: 0, rejects: 0, runtime: 0.000s)
+Starting reduce operator chain [v1.0] (stage: pre_rtlopt, startdef: somador, recur: true)
+Completed reduce operator chain (accepts: 0, rejects: 0, runtime: 0.000s)
+Starting common data mux cascade opt [v1.0] (stage: pre_rtlopt, startdef: somador, recur: true)
+Completed common data mux cascade opt (accepts: 0, rejects: 0, runtime: 0.000s)
+Starting mux input consolidation [v1.0] (stage: pre_rtlopt, startdef: somador, recur: true)
+Completed mux input consolidation (accepts: 0, rejects: 0, runtime: 0.000s)
+Starting optimize datapath elements [v1.0] (stage: pre_rtlopt, startdef: somador, recur: true)
+Completed optimize datapath elements (accepts: 0, rejects: 0, runtime: 0.000s)
+Starting clip mux common data inputs [v1.0] (stage: pre_rtlopt, startdef: somador, recur: true)
+Completed clip mux common data inputs (accepts: 0, rejects: 0, runtime: 0.000s)
+Starting clip the non-user hierarchies [v2.0] (stage: pre_rtlopt, startdef: somador, recur: true)
+Completed clip the non-user hierarchies (accepts: 0, rejects: 0, runtime: 0.000s)
+Running Unified Mux Engine Tricks...
+Completed Unified Mux Engine Tricks
+--------------------------------------------------
+| Trick       | Accepts | Rejects | Runtime (ms) | 
+--------------------------------------------------
+| ume_runtime |       0 |       0 |         0.00 | 
+--------------------------------------------------
+Number of big hc bmuxes before = 0
+Info    : Pre-processed datapath logic. [DPOPT-6]
+        : Pre-processing optimizations applied to datapath logic in 'somador':
+          live_trim(2) 
+Info    : Optimizing datapath logic. [DPOPT-1]
+        : Optimizing datapath logic in 'somador'.
+Info    : Implementing datapath configurations. [DPOPT-3]
+        : Implementing datapath configurations for 'CDN_DP_region_0_0'
+CSAGen Prep Share:0 Re-Write:0 Speculation: 0
+MaxCSA: Successfully built Maximal CSA Expression Expr0
+CDN_DP_region_0_0 level = 0 loads = 0 drivers = 0
+CDN_DP_region_0_0_c0 in somador: area: 1046925180 ,dp = 2 mux = 0 sg = slow         worst_clk_period: 0.0000 
+    wns: 0  norm_wns:  0.0000 
+    fail_endp: 0 
+    tns:  0  tns_per_endp:  0.0000   norm_tns_per_endp:  0.0000 
+    tns_sense_max:  0.0000  tns_sense_avg:  0.0000   tns_sense_num: 0
+ skipped
+CDN_DP_region_0_0_c1 in somador: area: 758486610 ,dp = 1 mux = 0 sg = fast         worst_clk_period: 0.0000 
+    wns: 0  norm_wns:  0.0000 
+    fail_endp: 0 
+    tns:  0  tns_per_endp:  0.0000   norm_tns_per_endp:  0.0000 
+    tns_sense_max:  0.0000  tns_sense_avg:  0.0000   tns_sense_num: 0
+ is current best
+CDN_DP_region_0_0_c2 in somador: area: 758486610 ,dp = 1 mux = 0 sg = very_slow    worst_clk_period: 0.0000 
+    wns: 0  norm_wns:  0.0000 
+    fail_endp: 0 
+    tns:  0  tns_per_endp:  0.0000   norm_tns_per_endp:  0.0000 
+    tns_sense_max:  0.0000  tns_sense_avg:  0.0000   tns_sense_num: 0
+ is current best
+CDN_DP_region_0_0_c3 in somador: area: 758486610 ,dp = 1 mux = 0 sg = very_fast    worst_clk_period: 0.0000 
+    wns: 0  norm_wns:  0.0000 
+    fail_endp: 0 
+    tns:  0  tns_per_endp:  0.0000   norm_tns_per_endp:  0.0000 
+    tns_sense_max:  0.0000  tns_sense_avg:  0.0000   tns_sense_num: 0
+ is current best
+CDN_DP_region_0_0_c4 in somador: area: 758486610 ,dp = 1 mux = 0 sg = very_fast    worst_clk_period: 0.0000 
+    wns: 0  norm_wns:  0.0000 
+    fail_endp: 0 
+    tns:  0  tns_per_endp:  0.0000   norm_tns_per_endp:  0.0000 
+    tns_sense_max:  0.0000  tns_sense_avg:  0.0000   tns_sense_num: 0
+ is current best
+CDN_DP_region_0_0_c5 in somador: area: 758486610 ,dp = 1 mux = 0 sg = very_fast    worst_clk_period: 0.0000 
+    wns: 0  norm_wns:  0.0000 
+    fail_endp: 0 
+    tns:  0  tns_per_endp:  0.0000   norm_tns_per_endp:  0.0000 
+    tns_sense_max:  0.0000  tns_sense_avg:  0.0000   tns_sense_num: 0
+ is current best
+CDN_DP_region_0_0_c6 in somador: area: 758486610 ,dp = 1 mux = 0 sg = very_fast    worst_clk_period: 0.0000 
+    wns: 0  norm_wns:  0.0000 
+    fail_endp: 0 
+    tns:  0  tns_per_endp:  0.0000   norm_tns_per_endp:  0.0000 
+    tns_sense_max:  0.0000  tns_sense_avg:  0.0000   tns_sense_num: 0
+ is current best
+CDN_DP_region_0_0_c7 in somador: area: 774510975 ,dp = 1 mux = 0 sg = very_fast    worst_clk_period: 0.0000 
+    wns: 0  norm_wns:  0.0000 
+    fail_endp: 0 
+    tns:  0  tns_per_endp:  0.0000   norm_tns_per_endp:  0.0000 
+    tns_sense_max:  0.0000  tns_sense_avg:  0.0000   tns_sense_num: 0
+
+Best config: CDN_DP_region_0_0_c6 in somador: area: 758486610 ,dp = 1 mux = 0 sg = very_fast    worst_clk_period: 0.0000 
+    wns: 0  norm_wns:  0.0000 
+    fail_endp: 0 
+    tns:  0  tns_per_endp:  0.0000   norm_tns_per_endp:  0.0000 
+    tns_sense_max:  0.0000  tns_sense_avg:  0.0000   tns_sense_num: 0
+  Smallest config area : 758486610.  Fastest config wns;  0
+##>+----------------------------------------------------------------------------------------------------------------------------------------------------------------+
+##>Summary table of configs (Best config is CDN_DP_region_0_0_c6)
+##>+----------------------------------------------------------------------------------------------------------------------------------------------------------------+
+##>                     0                  1                  2                  3                  4                  5                  6                  7            
+##>+----------------------------------------------------------------------------------------------------------------------------------------------------------------+
+##>           Area       1046925180          758486610          758486610          758486610          758486610          758486610          758486610          774510975  
+##>            WNS        +98189.40          +98648.80          +98648.80          +98648.80          +98648.80          +98648.80          +98648.80          +98648.80  
+##>            TNS                0                  0                  0                  0                  0                  0                  0                  0  
+##>    Num Rewrite                0                  0                  0                  0                  0                  0                  0                  0  
+##>     Num Factor                0                  0                  0                  0                  0                  0                  0                  0  
+##>      Num Share                0                  0                  0                  0                  0                  0                  0                  0  
+##>   Num CmultCse                0                  0                  0                  0                  0                  0                  0                  0  
+##>   Num Downsize                0                  0                  0                  0                  0                  0                  0                  0  
+##>  Num Speculate                0                  0                  0                  0                  0                  0                  0                  0  
+##>     Runtime(s)                0                  0                  0                  0                  0                  0                  0                  0  
++----------------------------------------------------------------------------------------------------------------------------------------------------------------+
+##>
+##>
+##>+------------------------------------------------------------------------------------------------------------------------------------------------------------+
+##>Optimization Step DEBUG Table for config CDN_DP_region_0_0_c6
+##>
+##>                          Step                        Area   ( % Chg)        WNS (Change)        TNS (Change)          Runtime (s)        Comment                   
+##>+------------------------------------------------------------------------------------------------------------------------------------------------------------+
+##>createMaxCarrySave              START             1046925180 (      )    107472371.80 (        )             0 (        )              
+##> datapath_rewrite_one_def       START             1046925180 ( +0.00)    107472371.80 (   +0.00)             0 (       0)              
+##>  fast_cse_elim                 START             1046925180 ( +0.00)    107472371.80 (   +0.00)             0 (       0)              
+##>                                  END             1046925180 ( +0.00)    107472371.80 (   +0.00)             0 (       0)           0  
+##>  fast_cse_elim                 START             1046925180 ( +0.00)    107472371.80 (   +0.00)             0 (       0)              
+##>                                  END             1046925180 ( +0.00)    107472371.80 (   +0.00)             0 (       0)           0  
+##>                                  END             1046925180 ( +0.00)    107472371.80 (   +0.00)             0 (       0)           0  
+##> dpopt_share_one_def            START             1046925180 ( +0.00)    107472371.80 (   +0.00)             0 (       0)              
+##>                                  END             1046925180 ( +0.00)    107472371.80 (   +0.00)             0 (       0)           0  
+##> csa_opto                       START             1046925180 ( +0.00)    214748364.70 (+107275992.90)             0 (       0)              
+##>                                  END              758486610 (-27.55)    214748364.70 (   +0.00)             0 (       0)           0  
+##>                                  END              758486610 (-27.55)    214748364.70 (+107275992.90)             0 (       0)           0  
+##>canonicalize_by_names           START              758486610 ( +0.00)    214748364.70 (   +0.00)             0 (       0)              
+##>                                  END              758486610 ( +0.00)    214748364.70 (   +0.00)             0 (       0)           0  
+##>datapath_rewrite_post_csa_one_  START              758486610 ( +0.00)    214748364.70 (   +0.00)             0 (       0)              
+##>                                  END              758486610 ( +0.00)    214748364.70 (   +0.00)             0 (       0)           0  
+##>datapath_csa_factoring_one_gde  START              758486610 ( +0.00)    214748364.70 (   +0.00)             0 (       0)              
+##>                                  END              758486610 ( +0.00)    214748364.70 (   +0.00)             0 (       0)           0  
+##>dpopt_share_one_def             START              758486610 ( +0.00)    214748364.70 (   +0.00)             0 (       0)              
+##>                                  END              758486610 ( +0.00)    214748364.70 (   +0.00)             0 (       0)           0  
+##>datapath_rewrite_post_share     START              758486610 ( +0.00)    214748364.70 (   +0.00)             0 (       0)              
+##>                                  END              758486610 ( +0.00)    214748364.70 (   +0.00)             0 (       0)           0  
+##>dp_combine_const_mult_with_com  START              758486610 ( +0.00)    214748364.70 (   +0.00)             0 (       0)              
+##>                                  END              758486610 ( +0.00)    214748364.70 (   +0.00)             0 (       0)           0  
+##>dp_operator_level_decompositio  START              758486610 ( +0.00)    214748364.70 (   +0.00)             0 (       0)              
+##>                                  END              758486610 ( +0.00)    214748364.70 (   +0.00)             0 (       0)           0  
+##>selective_flatten_dp_config     START              758486610 ( +0.00)    214748364.70 (   +0.00)             0 (       0)              
+##>                                  END              758486610 ( +0.00)    214748364.70 (   +0.00)             0 (       0)           0  
+##>createMaxCarrySave              START              758486610 ( +0.00)    214748364.70 (   +0.00)             0 (       0)              
+##> datapath_rewrite_one_def       START              758486610 ( +0.00)    214748364.70 (   +0.00)             0 (       0)              
+##>  fast_cse_elim                 START              758486610 ( +0.00)    214748364.70 (   +0.00)             0 (       0)              
+##>                                  END              758486610 ( +0.00)    214748364.70 (   +0.00)             0 (       0)           0  
+##>  fast_cse_elim                 START              758486610 ( +0.00)    214748364.70 (   +0.00)             0 (       0)              
+##>                                  END              758486610 ( +0.00)    214748364.70 (   +0.00)             0 (       0)           0  
+##>                                  END              758486610 ( +0.00)    214748364.70 (   +0.00)             0 (       0)           0  
+##> dpopt_share_one_def            START              758486610 ( +0.00)    214748364.70 (   +0.00)             0 (       0)              
+##>                                  END              758486610 ( +0.00)    214748364.70 (   +0.00)             0 (       0)           0  
+##> csa_opto                       START              758486610 ( +0.00)    214748364.70 (   +0.00)             0 (       0)              
+##>                                  END              758486610 ( +0.00)    214748364.70 (   +0.00)             0 (       0)           0  
+##>                                  END              758486610 ( +0.00)    214748364.70 (   +0.00)             0 (       0)           0  
+##>context_based_simplify          START              758486610 ( +0.00)    214748364.70 (   +0.00)             0 (       0)              
+##>                                  END              758486610 ( +0.00)    214748364.70 (   +0.00)             0 (       0)           0  
+##>group_csa_final_adder_dp        START              758486610 ( +0.00)    214748364.70 (   +0.00)             0 (       0)              
+##>                                  END              758486610 ( +0.00)    214748364.70 (   +0.00)             0 (       0)           0  
+##>dpopt_flatten_critical_muxes_i  START              758486610 ( +0.00)    214748364.70 (   +0.00)             0 (       0)              
+##>                                  END              758486610 ( +0.00)    214748364.70 (   +0.00)             0 (       0)           0  
+##>create_score                    START              758486610 ( +0.00)    98648.80 (-214649715.90)             0 (       0)              
+##>                                  END              758486610 ( +0.00)    98648.80 (   +0.00)             0 (       0)           0  
+##>+------------------------------------------------------------------------------------------------------------------------------------------------------------+
+Committed config: CDN_DP_region_0_0_c6
+Info    : Done implementing datapath configurations. [DPOPT-4]
+        : Selected 'very_fast' configuration 6 for module 'CDN_DP_region_0_0'.
+          Optimizations applied to 'very_fast' configuration:
+            rewriting(0), factoring(0), sharing(0), cmultcse(0), downsizing(0), speculation(0)
+Info    : Done optimizing datapath logic. [DPOPT-2]
+        : Done optimizing datapath logic in 'somador'.
+Number of big hc bmuxes after = 0
+Starting logic reduction [v1.0] (stage: post_rtlopt, startdef: somador, recur: true)
+Completed logic reduction (accepts: 0, rejects: 0, runtime: 0.000s)
+Starting mux data reorder optimization [v1.0] (stage: post_rtlopt, startdef: somador, recur: true)
+Completed mux data reorder optimization (accepts: 0, rejects: 0, runtime: 0.000s)
+Starting mux speculation [v1.0] (stage: post_muxopt, startdef: somador, recur: true)
+Starting speculation optimization
+Completed speculation optimization (accepts:0)
+Completed mux speculation (accepts: 0, rejects: 0, runtime: 0.003s)
+==================================
+Stage : to_generic 
+==================================
+  =================
+   Message Summary
+  =================
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+|    Id    |  Sev   |Count |                                                                                             Message Text                                                                                               |
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+| CDFG-771 |Info    |    2 |Replaced logic with a constant value.                                                                                                                                                                   |
+| CDFG-818 |Warning |    1 |Using default parameter value for module elaboration.                                                                                                                                                   |
+| CWD-19   |Info    |   14 |An implementation was inferred.                                                                                                                                                                         |
+| DPOPT-1  |Info    |    1 |Optimizing datapath logic.                                                                                                                                                                              |
+| DPOPT-2  |Info    |    1 |Done optimizing datapath logic.                                                                                                                                                                         |
+| DPOPT-3  |Info    |    1 |Implementing datapath configurations.                                                                                                                                                                   |
+| DPOPT-4  |Info    |    1 |Done implementing datapath configurations.                                                                                                                                                              |
+| DPOPT-6  |Info    |    1 |Pre-processed datapath logic.                                                                                                                                                                           |
+| ELAB-1   |Info    |    1 |Elaborating Design.                                                                                                                                                                                     |
+| ELAB-3   |Info    |    1 |Done Elaborating Design.                                                                                                                                                                                |
+| ELAB-5   |Info    |    1 |Binding to architecture.                                                                                                                                                                                |
+| LBR-9    |Warning |   40 |Library cell has no output pins defined.                                                                                                                                                                |
+|          |        |      |Add the missing output pin(s)                                                                                                                                                                           |
+|          |        |      | , then reload the library. Else the library cell will be marked as timing model i.e. unusable. Timing_model means that the cell does not have any defined function. If there is no output pin, Genus   |
+|          |        |      | will mark library cell as unusable i.e. the attribute 'usable' will be marked to 'false' on the libcell. Therefore, the cell is not used for mapping and it will not be picked up from the library for |
+|          |        |      | synthesis. If you query the attribute 'unusable_reason' on the libcell; result will be: 'Library cell has no output pins.'Note: The message LBR-9 is only for the logical pins and not for the         |
+|          |        |      | power_ground pins. Genus will depend upon the output function defined in the pin group (output pin) of the cell, to use it for mapping. The pg_pin will not have any function defined.                 |
+| LBR-41   |Info    |    2 |An output library pin lacks a function attribute.                                                                                                                                                       |
+|          |        |      |If the remainder of this library cell's semantic checks are successful, it will be considered as a timing-model (because one of its outputs does not have a valid function.                             |
+| LBR-109  |Info    |    1 |Set default library domain.                                                                                                                                                                             |
+| LBR-155  |Info    | 2112 |Mismatch in unateness between 'timing_sense' attribute and the function.                                                                                                                                |
+|          |        |      |The 'timing_sense' attribute will be respected.                                                                                                                                                         |
+| LBR-161  |Info    |    1 |Setting the maximum print count of this message to 10 if information_level is less than 9.                                                                                                              |
+| LBR-162  |Info    |  248 |Both 'pos_unate' and 'neg_unate' timing_sense arcs have been processed.                                                                                                                                 |
+|          |        |      |Setting the 'timing_sense' to non_unate.                                                                                                                                                                |
+| LBR-412  |Info    |    2 |Created nominal operating condition.                                                                                                                                                                    |
+|          |        |      |The nominal operating condition is represented, either by the nominal PVT values specified in the library source (via nom_process,nom_voltage and nom_temperature respectively)                         |
+|          |        |      | , or by the default PVT values (1.0,1.0,1.0).                                                                                                                                                          |
+| LBR-518  |Info    |    2 |Missing a function attribute in the output pin definition.                                                                                                                                              |
+| PHYS-129 |Info    |  119 |Via with no resistance will have a value of '0.0' assigned for resistance value.                                                                                                                        |
+|          |        |      |If this is the expected behavior, this message can be ignored.                                                                                                                                          |
+| PHYS-279 |Warning |  188 |Physical cell not defined in library.                                                                                                                                                                   |
+|          |        |      |Ensure that the proper library files are available and have been imported.                                                                                                                              |
+| PHYS-752 |Info    |    1 |Partition Based Synthesis execution skipped.                                                                                                                                                            |
+| SYNTH-1  |Info    |    1 |Synthesizing.                                                                                                                                                                                           |
+| TIM-1000 |Info    |    1 |Multimode clock gating check is disabled.                                                                                                                                                               |
+| TUI-280  |Info    |    1 |An additional product license has been checked out.                                                                                                                                                     |
+|          |        |      |The command 'license checkin' can be used to check the license back in when it is no longer needed.                                                                                                     |
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Current PLE settings:
+
+Aspect ratio        : 1.000
+Shrink factor       : 1.000
+Scale of res/length : 1.000
+Scale of cap/length : 1.000
+Net derating factor : 1.000
+Thermal factor      : 1.324
+Via Resistance      : 0.600 ohm (from qrc_tech_file)
+Site size           : 1.910 um (from lef [tech+cell])
+
+                                    Capacitance  
+   Layer                             / Length         Data source:
+ Name        Direction Utilization  (pF/micron)       qrc_tech_file
+-------------------------------------------------
+metal1_conn      H         0.00        0.000367  
+metal2_conn      V         1.00        0.000317  
+metal3_conn      H         1.00        0.000315  
+metal4_conn      V         1.00        0.000317  
+metal5_conn      H         1.00        0.000317  
+metal6_conn      V         1.00        0.000318  
+metal7_conn      H         1.00        0.000318  
+metal8_conn      V         1.00        0.000315  
+metal9_conn      H         1.00        0.001752  
+metal10_conn     V         1.00        0.000854  
+metal11_conn     H         1.00        0.000739  
+
+                                     Resistance   
+   Layer                              / Length         Data source:
+ Name        Direction Utilization  (ohm/micron)       qrc_tech_file
+--------------------------------------------------
+metal1_conn      H         0.00         1.900028  
+metal2_conn      V         1.00         1.183743  
+metal3_conn      H         1.00         1.183743  
+metal4_conn      V         1.00         1.183743  
+metal5_conn      H         1.00         1.183743  
+metal6_conn      V         1.00         1.183743  
+metal7_conn      H         1.00         1.183743  
+metal8_conn      V         1.00         0.432387  
+metal9_conn      H         1.00         0.432387  
+metal10_conn     V         1.00         0.157232  
+metal11_conn     H         1.00         0.158932  
+
+                                         Area     
+   Layer                               / Length        Data source:
+ Name        Direction Utilization     (micron)        lef_library
+--------------------------------------------------
+Metal1           H         0.00         0.060000  
+Metal2           V         1.00         0.080000  
+Metal3           H         1.00         0.080000  
+Metal4           V         1.00         0.080000  
+Metal5           H         1.00         0.080000  
+Metal6           V         1.00         0.080000  
+Metal7           H         1.00         0.080000  
+Metal8           V         1.00         0.080000  
+Metal9           H         1.00         0.080000  
+Metal10          V         1.00         0.220000  
+Metal11          H         1.00         0.220000  
+
+Mapper: Libraries have:
+	domain worst: 324 combo usable cells and 84 sequential usable cells
+Multi-threaded constant propagation [1|0] ...
+Multi-threaded Virtual Mapping    (8 threads, 8 of 20 CPUs usable)
+==================================
+Stage : first_condense 
+==================================
+  =================
+   Message Summary
+  =================
+---------------------------------------------------------------
+|  Id  |Sev  |Count |              Message Text               |
+---------------------------------------------------------------
+| GB-6 |Info |    1 |A datapath component has been ungrouped. |
+---------------------------------------------------------------
+ 
+Global mapping target info
+==========================
+Cost Group 'clk' target slack:  2986 ps
+Target path end-point (Pin: sum_temp_reg[7]/d)
+
+
+State Retention Synthesis Status
+================================
+
+Category                        Flops   Percentage
+--------------------------------------------------
+Total instances                     9        100.0
+Excluded from State Retention       9        100.0
+    - Will not convert              9        100.0
+      - Preserved                   0          0.0
+      - Power intent excluded       9        100.0
+    - Could not convert             0          0.0
+      - Scan type                   0          0.0
+      - No suitable cell            0          0.0
+State Retention instances           0          0.0
+--------------------------------------------------
+
+PBS_Generic_Opt-Post - Elapsed_Time 1, CPU_Time 0.981935
+stamp 'PBS_Generic_Opt-Post' being created for table 'pbs_debug'
+
+  Total Time (Wall) |  Stage Time (Wall)  |   % (Wall)   |    Date - Time     |  Memory   | Stage
+--------------------+---------------------+--------------+--------------------+-----------+----------------------
+ 00:00:05(00:00:04) |  00:00:00(00:00:00) |   0.0(  0.0) |   10:36:22 (Jan15) |  414.4 MB | PBS_Generic-Start
+--------------------+---------------------+--------------+--------------------+-----------+----------------------
+ 00:00:06(00:00:05) |  00:00:00(00:00:01) | 100.0(100.0) |   10:36:23 (Jan15) |  414.4 MB | PBS_Generic_Opt-Post
+--------------------+---------------------+--------------+--------------------+-----------+----------------------
+Number of threads: 8 * 1   (id: pbs_debug, time_info v1.57)
+Info: (*N*) indicates data that was populated from previously saved time_info database
+Info: CPU time includes time of parent + longest thread
+PBS_Generic-Postgen HBO Optimizations - Elapsed_Time 0, CPU_Time 0.0
+stamp 'PBS_Generic-Postgen HBO Optimizations' being created for table 'pbs_debug'
+
+  Total Time (Wall) |  Stage Time (Wall)  |   % (Wall)   |    Date - Time     |  Memory   | Stage
+--------------------+---------------------+--------------+--------------------+-----------+----------------------
+ 00:00:05(00:00:04) |  00:00:00(00:00:00) |   0.0(  0.0) |   10:36:22 (Jan15) |  414.4 MB | PBS_Generic-Start
+--------------------+---------------------+--------------+--------------------+-----------+----------------------
+ 00:00:06(00:00:05) |  00:00:00(00:00:01) | 100.0(100.0) |   10:36:23 (Jan15) |  414.4 MB | PBS_Generic_Opt-Post
+--------------------+---------------------+--------------+--------------------+-----------+----------------------
+ 00:00:06(00:00:05) |  00:00:00(00:00:00) |   0.0(  0.0) |   10:36:23 (Jan15) |  414.4 MB | PBS_Generic-Postgen HBO Optimizations
+--------------------+---------------------+--------------+--------------------+-----------+----------------------
+Number of threads: 8 * 1   (id: pbs_debug, time_info v1.57)
+Info: (*N*) indicates data that was populated from previously saved time_info database
+Info: CPU time includes time of parent + longest thread
+##>=================== Cadence Confidential (Generic-Logical) ===================
+##>=================== Cadence Confidential (Generic-Logical) ===================
+##>Main Thread Summary:
+##>----------------------------------------------------------------------------------------
+##>STEP                           Elapsed       WNS       TNS     Insts      Area    Memory
+##>----------------------------------------------------------------------------------------
+##>G:Initial                            0         -         -       170       467       414
+##>G:Setup                              0         -         -         -         -         -
+##>G:Launch ST                          0         -         -         -         -         -
+##>G:Design Partition                   0         -         -         -         -         -
+##>G:Create Partition Netlists          0         -         -         -         -         -
+##>G:Init Power                         0         -         -         -         -         -
+##>G:Budgeting                          0         -         -         -         -         -
+##>G:Derenv-DB                          0         -         -         -         -         -
+##>G:Debug Outputs                      0         -         -         -         -         -
+##>G:ST loading                         0         -         -         -         -         -
+##>G:Distributed                        0         -         -         -         -         -
+##>G:Timer                              0         -         -         -         -         -
+##>G:Assembly                           0         -         -         -         -         -
+##>G:DFT                                0         -         -         -         -         -
+##>G:Const Prop                         0         -         -        76       261       414
+##>G:Misc                               1
+##>----------------------------------------------------------------------------------------
+##>Total Elapsed                        1
+##>========================================================================================
+Info    : Done synthesizing. [SYNTH-2]
+        : Done synthesizing 'somador' to generic gates.
+      flow.cputime  flow.realtime  timing.setup.tns  timing.setup.wns  snapshot
+UM:*                                                                   syn_gen
+@file(somador.tcl) 98: syn_map ${HDL_NAME}
+##Generic Timing Info for library domain: worst typical gate delay: 152.5 ps std_slew: 18.2 ps std_load: 1.0 fF
+Current PLE settings:
+
+Aspect ratio        : 1.000
+Shrink factor       : 1.000
+Scale of res/length : 1.000
+Scale of cap/length : 1.000
+Net derating factor : 1.000
+Thermal factor      : 1.324
+Via Resistance      : 0.600 ohm (from qrc_tech_file)
+Site size           : 1.910 um (from lef [tech+cell])
+
+                                    Capacitance  
+   Layer                             / Length         Data source:
+ Name        Direction Utilization  (pF/micron)       qrc_tech_file
+-------------------------------------------------
+metal1_conn      H         0.00        0.000367  
+metal2_conn      V         1.00        0.000317  
+metal3_conn      H         1.00        0.000315  
+metal4_conn      V         1.00        0.000317  
+metal5_conn      H         1.00        0.000317  
+metal6_conn      V         1.00        0.000318  
+metal7_conn      H         1.00        0.000318  
+metal8_conn      V         1.00        0.000315  
+metal9_conn      H         1.00        0.001752  
+metal10_conn     V         1.00        0.000854  
+metal11_conn     H         1.00        0.000739  
+
+                                     Resistance   
+   Layer                              / Length         Data source:
+ Name        Direction Utilization  (ohm/micron)       qrc_tech_file
+--------------------------------------------------
+metal1_conn      H         0.00         1.900028  
+metal2_conn      V         1.00         1.183743  
+metal3_conn      H         1.00         1.183743  
+metal4_conn      V         1.00         1.183743  
+metal5_conn      H         1.00         1.183743  
+metal6_conn      V         1.00         1.183743  
+metal7_conn      H         1.00         1.183743  
+metal8_conn      V         1.00         0.432387  
+metal9_conn      H         1.00         0.432387  
+metal10_conn     V         1.00         0.157232  
+metal11_conn     H         1.00         0.158932  
+
+                                         Area     
+   Layer                               / Length        Data source:
+ Name        Direction Utilization     (micron)        lef_library
+--------------------------------------------------
+Metal1           H         0.00         0.060000  
+Metal2           V         1.00         0.080000  
+Metal3           H         1.00         0.080000  
+Metal4           V         1.00         0.080000  
+Metal5           H         1.00         0.080000  
+Metal6           V         1.00         0.080000  
+Metal7           H         1.00         0.080000  
+Metal8           V         1.00         0.080000  
+Metal9           H         1.00         0.080000  
+Metal10          V         1.00         0.220000  
+Metal11          H         1.00         0.220000  
+
+Info    : Mapping. [SYNTH-4]
+        : Mapping 'somador' using 'high' effort.
+Mapper: Libraries have:
+	domain worst: 324 combo usable cells and 84 sequential usable cells
+Configuring mapper costing (none)
+TNS Restructuring config: no_value at stage: map applied.
+PBS_TechMap-Start - Elapsed_Time 0, CPU_Time 0.0
+stamp 'PBS_TechMap-Start' being created for table 'pbs_debug'
+
+  Total Time (Wall) |  Stage Time (Wall)  |   % (Wall)   |    Date - Time     |  Memory   | Stage
+--------------------+---------------------+--------------+--------------------+-----------+----------------------
+ 00:00:05(00:00:04) |  00:00:00(00:00:00) |   0.0(  0.0) |   10:36:22 (Jan15) |  414.4 MB | PBS_Generic-Start
+--------------------+---------------------+--------------+--------------------+-----------+----------------------
+ 00:00:06(00:00:05) |  00:00:00(00:00:01) | 100.0(100.0) |   10:36:23 (Jan15) |  414.4 MB | PBS_Generic_Opt-Post
+--------------------+---------------------+--------------+--------------------+-----------+----------------------
+ 00:00:06(00:00:05) |  00:00:00(00:00:00) |   0.0(  0.0) |   10:36:23 (Jan15) |  414.4 MB | PBS_Generic-Postgen HBO Optimizations
+--------------------+---------------------+--------------+--------------------+-----------+----------------------
+ 00:00:06(00:00:05) |  00:00:00(00:00:00) |   0.0(  0.0) |   10:36:23 (Jan15) |  414.4 MB | PBS_TechMap-Start
+--------------------+---------------------+--------------+--------------------+-----------+----------------------
+Number of threads: 8 * 1   (id: pbs_debug, time_info v1.57)
+Info: (*N*) indicates data that was populated from previously saved time_info database
+Info: CPU time includes time of parent + longest thread
+PBS_TechMap-Premap HBO Optimizations - Elapsed_Time 0, CPU_Time 0.0
+stamp 'PBS_TechMap-Premap HBO Optimizations' being created for table 'pbs_debug'
+
+  Total Time (Wall) |  Stage Time (Wall)  |   % (Wall)   |    Date - Time     |  Memory   | Stage
+--------------------+---------------------+--------------+--------------------+-----------+----------------------
+ 00:00:05(00:00:04) |  00:00:00(00:00:00) |   0.0(  0.0) |   10:36:22 (Jan15) |  414.4 MB | PBS_Generic-Start
+--------------------+---------------------+--------------+--------------------+-----------+----------------------
+ 00:00:06(00:00:05) |  00:00:00(00:00:01) | 100.0(100.0) |   10:36:23 (Jan15) |  414.4 MB | PBS_Generic_Opt-Post
+--------------------+---------------------+--------------+--------------------+-----------+----------------------
+ 00:00:06(00:00:05) |  00:00:00(00:00:00) |   0.0(  0.0) |   10:36:23 (Jan15) |  414.4 MB | PBS_Generic-Postgen HBO Optimizations
+--------------------+---------------------+--------------+--------------------+-----------+----------------------
+ 00:00:06(00:00:05) |  00:00:00(00:00:00) |   0.0(  0.0) |   10:36:23 (Jan15) |  414.4 MB | PBS_TechMap-Start
+--------------------+---------------------+--------------+--------------------+-----------+----------------------
+ 00:00:06(00:00:05) |  00:00:00(00:00:00) |   0.0(  0.0) |   10:36:23 (Jan15) |  414.4 MB | PBS_TechMap-Premap HBO Optimizations
+--------------------+---------------------+--------------+--------------------+-----------+----------------------
+Number of threads: 8 * 1   (id: pbs_debug, time_info v1.57)
+Info: (*N*) indicates data that was populated from previously saved time_info database
+Info: CPU time includes time of parent + longest thread
+Info    : Partition Based Synthesis execution skipped. [PHYS-752]
+        : Design size is less than the partition size '100000' for distributed mapping optimization to kick in.
+Current PLE settings:
+
+Aspect ratio        : 1.000
+Shrink factor       : 1.000
+Scale of res/length : 1.000
+Scale of cap/length : 1.000
+Net derating factor : 1.000
+Thermal factor      : 1.324
+Via Resistance      : 0.600 ohm (from qrc_tech_file)
+Site size           : 1.910 um (from lef [tech+cell])
+
+                                    Capacitance  
+   Layer                             / Length         Data source:
+ Name        Direction Utilization  (pF/micron)       qrc_tech_file
+-------------------------------------------------
+metal1_conn      H         0.00        0.000367  
+metal2_conn      V         1.00        0.000317  
+metal3_conn      H         1.00        0.000315  
+metal4_conn      V         1.00        0.000317  
+metal5_conn      H         1.00        0.000317  
+metal6_conn      V         1.00        0.000318  
+metal7_conn      H         1.00        0.000318  
+metal8_conn      V         1.00        0.000315  
+metal9_conn      H         1.00        0.001752  
+metal10_conn     V         1.00        0.000854  
+metal11_conn     H         1.00        0.000739  
+
+                                     Resistance   
+   Layer                              / Length         Data source:
+ Name        Direction Utilization  (ohm/micron)       qrc_tech_file
+--------------------------------------------------
+metal1_conn      H         0.00         1.900028  
+metal2_conn      V         1.00         1.183743  
+metal3_conn      H         1.00         1.183743  
+metal4_conn      V         1.00         1.183743  
+metal5_conn      H         1.00         1.183743  
+metal6_conn      V         1.00         1.183743  
+metal7_conn      H         1.00         1.183743  
+metal8_conn      V         1.00         0.432387  
+metal9_conn      H         1.00         0.432387  
+metal10_conn     V         1.00         0.157232  
+metal11_conn     H         1.00         0.158932  
+
+                                         Area     
+   Layer                               / Length        Data source:
+ Name        Direction Utilization     (micron)        lef_library
+--------------------------------------------------
+Metal1           H         0.00         0.060000  
+Metal2           V         1.00         0.080000  
+Metal3           H         1.00         0.080000  
+Metal4           V         1.00         0.080000  
+Metal5           H         1.00         0.080000  
+Metal6           V         1.00         0.080000  
+Metal7           H         1.00         0.080000  
+Metal8           V         1.00         0.080000  
+Metal9           H         1.00         0.080000  
+Metal10          V         1.00         0.220000  
+Metal11          H         1.00         0.220000  
+
+Mapper: Libraries have:
+	domain worst: 324 combo usable cells and 84 sequential usable cells
+Multi-threaded Virtual Mapping    (8 threads, 8 of 20 CPUs usable)
+ 
+Global mapping target info
+==========================
+Cost Group 'clk' target slack:  2986 ps
+Target path end-point (Pin: sum_temp_reg[7]/d)
+
+Multi-threaded Virtual Mapping    (8 threads, 8 of 20 CPUs usable)
+Multi-threaded Technology Mapping (8 threads, 8 of 20 CPUs usable)
+ 
+Global mapping status
+=====================
+                                   Group   
+                                  Tot Wrst 
+                           Total  Weighted 
+Operation                   Area   Slacks  
+ global_map                  174        0 
+
+    Cost Group            Target    Slack    Diff.  Constr.
+-----------------------------------------------------------
+           clk              2986    97318            100000 
+
+ 
+Global incremental target info
+==============================
+Cost Group 'clk' target slack:  1990 ps
+Target path end-point (Pin: sum_temp_reg[7]/D (DFFRHQX8/D))
+
+==================================
+Stage : global_incr_map 
+==================================
+  =================
+   Message Summary
+  =================
+---------------------------------------------------------------------------------------------------
+|    Id    |Sev  |Count |                              Message Text                               |
+---------------------------------------------------------------------------------------------------
+| LBR-155  |Info |  528 |Mismatch in unateness between 'timing_sense' attribute and the function. |
+|          |     |      |The 'timing_sense' attribute will be respected.                          |
+| PHYS-752 |Info |    1 |Partition Based Synthesis execution skipped.                             |
+| SYNTH-2  |Info |    1 |Done synthesizing.                                                       |
+| SYNTH-4  |Info |    1 |Mapping.                                                                 |
+---------------------------------------------------------------------------------------------------
+ 
+Global incremental optimization status
+======================================
+                                   Group   
+                                  Tot Wrst 
+                           Total  Weighted 
+Operation                   Area   Slacks  
+ global_incr                 174        0 
+
+    Cost Group            Target    Slack    Diff.  Constr.
+-----------------------------------------------------------
+           clk              1990    97318            100000 
+
+
+State Retention Synthesis Status
+================================
+
+Category                        Flops   Percentage
+--------------------------------------------------
+Total instances                     9        100.0
+Excluded from State Retention       9        100.0
+    - Will not convert              9        100.0
+      - Preserved                   0          0.0
+      - Power intent excluded       9        100.0
+    - Could not convert             0          0.0
+      - Scan type                   0          0.0
+      - No suitable cell            0          0.0
+State Retention instances           0          0.0
+--------------------------------------------------
+
+INFO: skipping constant propagation
+PBS_Techmap-Global Mapping - Elapsed_Time 1, CPU_Time 0.9654600000000002
+stamp 'PBS_Techmap-Global Mapping' being created for table 'pbs_debug'
+
+  Total Time (Wall) |  Stage Time (Wall)  |   % (Wall)   |    Date - Time     |  Memory   | Stage
+--------------------+---------------------+--------------+--------------------+-----------+----------------------
+ 00:00:05(00:00:04) |  00:00:00(00:00:00) |   0.0(  0.0) |   10:36:22 (Jan15) |  414.4 MB | PBS_Generic-Start
+--------------------+---------------------+--------------+--------------------+-----------+----------------------
+ 00:00:06(00:00:05) |  00:00:00(00:00:01) |  50.4( 50.0) |   10:36:23 (Jan15) |  414.4 MB | PBS_Generic_Opt-Post
+--------------------+---------------------+--------------+--------------------+-----------+----------------------
+ 00:00:06(00:00:05) |  00:00:00(00:00:00) |   0.0(  0.0) |   10:36:23 (Jan15) |  414.4 MB | PBS_Generic-Postgen HBO Optimizations
+--------------------+---------------------+--------------+--------------------+-----------+----------------------
+ 00:00:06(00:00:05) |  00:00:00(00:00:00) |   0.0(  0.0) |   10:36:23 (Jan15) |  414.4 MB | PBS_TechMap-Start
+--------------------+---------------------+--------------+--------------------+-----------+----------------------
+ 00:00:06(00:00:05) |  00:00:00(00:00:00) |   0.0(  0.0) |   10:36:23 (Jan15) |  414.4 MB | PBS_TechMap-Premap HBO Optimizations
+--------------------+---------------------+--------------+--------------------+-----------+----------------------
+ 00:00:07(00:00:06) |  00:00:00(00:00:01) |  49.6( 50.0) |   10:36:24 (Jan15) |  414.4 MB | PBS_Techmap-Global Mapping
+--------------------+---------------------+--------------+--------------------+-----------+----------------------
+Number of threads: 8 * 1   (id: pbs_debug, time_info v1.57)
+Info: (*N*) indicates data that was populated from previously saved time_info database
+Info: CPU time includes time of parent + longest thread
+Warning : Command 'commit_power_intent' cannot proceed as there is no power intent loaded. [CPI-506]
+        : Command 'commit_power_intent' requires a valid power_intent to be loaded.
+Info    : Forcing flat compare. [CFM-212]
+        : No hierarchies found in design.
+Info    : Wrote formal verification information. [CFM-5]
+        : Wrote 'fv/somador/fv_map.fv.json' for netlist 'fv/somador/fv_map.v.gz'.
+Info    : Existing dofile found. Copied as fv/somador/rtl_to_fv_map.do~.
+Info    : Wrote dofile. [CFM-1]
+        : Dofile is 'fv/somador/rtl_to_fv_map.do'.
+        : Alias mapping flow is enabled.
+PBS_TechMap-Datapath Postmap Operations - Elapsed_Time 0, CPU_Time 0.0
+stamp 'PBS_TechMap-Datapath Postmap Operations' being created for table 'pbs_debug'
+
+  Total Time (Wall) |  Stage Time (Wall)  |   % (Wall)   |    Date - Time     |  Memory   | Stage
+--------------------+---------------------+--------------+--------------------+-----------+----------------------
+ 00:00:05(00:00:04) |  00:00:00(00:00:00) |   0.0(  0.0) |   10:36:22 (Jan15) |  414.4 MB | PBS_Generic-Start
+--------------------+---------------------+--------------+--------------------+-----------+----------------------
+ 00:00:06(00:00:05) |  00:00:00(00:00:01) |  50.4( 50.0) |   10:36:23 (Jan15) |  414.4 MB | PBS_Generic_Opt-Post
+--------------------+---------------------+--------------+--------------------+-----------+----------------------
+ 00:00:06(00:00:05) |  00:00:00(00:00:00) |   0.0(  0.0) |   10:36:23 (Jan15) |  414.4 MB | PBS_Generic-Postgen HBO Optimizations
+--------------------+---------------------+--------------+--------------------+-----------+----------------------
+ 00:00:06(00:00:05) |  00:00:00(00:00:00) |   0.0(  0.0) |   10:36:23 (Jan15) |  414.4 MB | PBS_TechMap-Start
+--------------------+---------------------+--------------+--------------------+-----------+----------------------
+ 00:00:06(00:00:05) |  00:00:00(00:00:00) |   0.0(  0.0) |   10:36:23 (Jan15) |  414.4 MB | PBS_TechMap-Premap HBO Optimizations
+--------------------+---------------------+--------------+--------------------+-----------+----------------------
+ 00:00:07(00:00:06) |  00:00:00(00:00:01) |  49.6( 50.0) |   10:36:24 (Jan15) |  414.4 MB | PBS_Techmap-Global Mapping
+--------------------+---------------------+--------------+--------------------+-----------+----------------------
+ 00:00:07(00:00:06) |  00:00:00(00:00:00) |   0.0(  0.0) |   10:36:24 (Jan15) |  414.4 MB | PBS_TechMap-Datapath Postmap Operations
+--------------------+---------------------+--------------+--------------------+-----------+----------------------
+Number of threads: 8 * 1   (id: pbs_debug, time_info v1.57)
+Info: (*N*) indicates data that was populated from previously saved time_info database
+Info: CPU time includes time of parent + longest thread
+PBS_TechMap-Postmap HBO Optimizations - Elapsed_Time 0, CPU_Time -0.00023399999999984544
+stamp 'PBS_TechMap-Postmap HBO Optimizations' being created for table 'pbs_debug'
+
+  Total Time (Wall) |  Stage Time (Wall)  |   % (Wall)   |    Date - Time     |  Memory   | Stage
+--------------------+---------------------+--------------+--------------------+-----------+----------------------
+ 00:00:05(00:00:04) |  00:00:00(00:00:00) |   0.0(  0.0) |   10:36:22 (Jan15) |  414.4 MB | PBS_Generic-Start
+--------------------+---------------------+--------------+--------------------+-----------+----------------------
+ 00:00:06(00:00:05) |  00:00:00(00:00:01) |  50.4( 50.0) |   10:36:23 (Jan15) |  414.4 MB | PBS_Generic_Opt-Post
+--------------------+---------------------+--------------+--------------------+-----------+----------------------
+ 00:00:06(00:00:05) |  00:00:00(00:00:00) |   0.0(  0.0) |   10:36:23 (Jan15) |  414.4 MB | PBS_Generic-Postgen HBO Optimizations
+--------------------+---------------------+--------------+--------------------+-----------+----------------------
+ 00:00:06(00:00:05) |  00:00:00(00:00:00) |   0.0(  0.0) |   10:36:23 (Jan15) |  414.4 MB | PBS_TechMap-Start
+--------------------+---------------------+--------------+--------------------+-----------+----------------------
+ 00:00:06(00:00:05) |  00:00:00(00:00:00) |   0.0(  0.0) |   10:36:23 (Jan15) |  414.4 MB | PBS_TechMap-Premap HBO Optimizations
+--------------------+---------------------+--------------+--------------------+-----------+----------------------
+ 00:00:07(00:00:06) |  00:00:00(00:00:01) |  49.6( 50.0) |   10:36:24 (Jan15) |  414.4 MB | PBS_Techmap-Global Mapping
+--------------------+---------------------+--------------+--------------------+-----------+----------------------
+ 00:00:07(00:00:06) |  00:00:00(00:00:00) |   0.0(  0.0) |   10:36:24 (Jan15) |  414.4 MB | PBS_TechMap-Datapath Postmap Operations
+--------------------+---------------------+--------------+--------------------+-----------+----------------------
+ 00:00:07(00:00:06) |  00:00:00(00:00:00) |  -0.0(  0.0) |   10:36:24 (Jan15) |  414.4 MB | PBS_TechMap-Postmap HBO Optimizations
+--------------------+---------------------+--------------+--------------------+-----------+----------------------
+Number of threads: 8 * 1   (id: pbs_debug, time_info v1.57)
+Info: (*N*) indicates data that was populated from previously saved time_info database
+Info: CPU time includes time of parent + longest thread
+ Doing ConstProp on design:somador ... 
+
+IOPT-REDREM: Performing redundancy removal: Detected 0 redundant wires. CPU time 0.000 seconds.
+
+PBS_TechMap-Postmap Clock Gating - Elapsed_Time 0, CPU_Time 0.0
+stamp 'PBS_TechMap-Postmap Clock Gating' being created for table 'pbs_debug'
+
+  Total Time (Wall) |  Stage Time (Wall)  |   % (Wall)   |    Date - Time     |  Memory   | Stage
+--------------------+---------------------+--------------+--------------------+-----------+----------------------
+ 00:00:05(00:00:04) |  00:00:00(00:00:00) |   0.0(  0.0) |   10:36:22 (Jan15) |  414.4 MB | PBS_Generic-Start
+--------------------+---------------------+--------------+--------------------+-----------+----------------------
+ 00:00:06(00:00:05) |  00:00:00(00:00:01) |  50.4( 50.0) |   10:36:23 (Jan15) |  414.4 MB | PBS_Generic_Opt-Post
+--------------------+---------------------+--------------+--------------------+-----------+----------------------
+ 00:00:06(00:00:05) |  00:00:00(00:00:00) |   0.0(  0.0) |   10:36:23 (Jan15) |  414.4 MB | PBS_Generic-Postgen HBO Optimizations
+--------------------+---------------------+--------------+--------------------+-----------+----------------------
+ 00:00:06(00:00:05) |  00:00:00(00:00:00) |   0.0(  0.0) |   10:36:23 (Jan15) |  414.4 MB | PBS_TechMap-Start
+--------------------+---------------------+--------------+--------------------+-----------+----------------------
+ 00:00:06(00:00:05) |  00:00:00(00:00:00) |   0.0(  0.0) |   10:36:23 (Jan15) |  414.4 MB | PBS_TechMap-Premap HBO Optimizations
+--------------------+---------------------+--------------+--------------------+-----------+----------------------
+ 00:00:07(00:00:06) |  00:00:00(00:00:01) |  49.6( 50.0) |   10:36:24 (Jan15) |  414.4 MB | PBS_Techmap-Global Mapping
+--------------------+---------------------+--------------+--------------------+-----------+----------------------
+ 00:00:07(00:00:06) |  00:00:00(00:00:00) |   0.0(  0.0) |   10:36:24 (Jan15) |  414.4 MB | PBS_TechMap-Datapath Postmap Operations
+--------------------+---------------------+--------------+--------------------+-----------+----------------------
+ 00:00:07(00:00:06) |  00:00:00(00:00:00) |  -0.0(  0.0) |   10:36:24 (Jan15) |  414.4 MB | PBS_TechMap-Postmap HBO Optimizations
+--------------------+---------------------+--------------+--------------------+-----------+----------------------
+ 00:00:07(00:00:06) |  00:00:00(00:00:00) |   0.0(  0.0) |   10:36:24 (Jan15) |  414.4 MB | PBS_TechMap-Postmap Clock Gating
+--------------------+---------------------+--------------+--------------------+-----------+----------------------
+Number of threads: 8 * 1   (id: pbs_debug, time_info v1.57)
+Info: (*N*) indicates data that was populated from previously saved time_info database
+Info: CPU time includes time of parent + longest thread
+-------------------------------------------------------------------------------
+ hi_fo_buf                   174        0         0         0        0
+
+           Trick     Calls     Accepts   Attempts    Time(secs) 
+-----------------------------------------------------------
+       hi_fo_buf         0  (        0 /        0 )  0.00
+
+ 
+Incremental optimization status
+===============================
+                                   Group   
+                                  Tot Wrst     Total - - DRC Totals - -
+                           Total  Weighted      Neg      Max       Max 
+Operation                   Area   Slacks      Slack    Trans      Cap 
+ init_delay                  174        0         0         0        0
+
+           Trick     Calls     Accepts   Attempts    Time(secs) 
+-----------------------------------------------------------
+       crit_upsz         0  (        0 /        0 )  0.00
+    plc_bal_star         0  (        0 /        0 )  0.00
+     drc_buftimb         0  (        0 /        0 )  0.00
+          plc_st         0  (        0 /        0 )  0.00
+    plc_st_fence         0  (        0 /        0 )  0.00
+        plc_star         0  (        0 /        0 )  0.00
+      plc_laf_st         0  (        0 /        0 )  0.00
+ plc_laf_st_fence         0  (        0 /        0 )  0.00
+     drc_buftims         0  (        0 /        0 )  0.00
+            fopt         0  (        0 /        0 )  0.00
+   plc_laf_lo_st         0  (        0 /        0 )  0.00
+       plc_lo_st         0  (        0 /        0 )  0.00
+        mb_split         0  (        0 /        0 )  0.00
+
+ 
+Local TNS optimization status
+=============================
+                                   Group   
+                                  Tot Wrst     Total - - DRC Totals - -
+                           Total  Weighted      Neg      Max       Max 
+Operation                   Area   Slacks      Slack    Trans      Cap 
+ init_tns                    174        0         0         0        0
+
+           Trick     Calls     Accepts   Attempts    Time(secs) 
+-----------------------------------------------------------
+    plc_bal_star         0  (        0 /        0 )  0.00
+     drc_buftimb         0  (        0 /        0 )  0.00
+     drc_buftims         0  (        0 /        0 )  0.00
+       crit_upsz         0  (        0 /        0 )  0.00
+   plc_laf_lo_st         0  (        0 /        0 )  0.00
+       plc_lo_st         0  (        0 /        0 )  0.00
+            fopt         0  (        0 /        0 )  0.00
+       crit_dnsz         0  (        0 /        0 )  0.00
+             dup         0  (        0 /        0 )  0.00
+        setup_dn         0  (        0 /        0 )  0.00
+        mb_split         0  (        0 /        0 )  0.00
+
+PBS_TechMap-Postmap Cleanup - Elapsed_Time 0, CPU_Time 0.0
+stamp 'PBS_TechMap-Postmap Cleanup' being created for table 'pbs_debug'
+
+  Total Time (Wall) |  Stage Time (Wall)  |   % (Wall)   |    Date - Time     |  Memory   | Stage
+--------------------+---------------------+--------------+--------------------+-----------+----------------------
+ 00:00:05(00:00:04) |  00:00:00(00:00:00) |   0.0(  0.0) |   10:36:22 (Jan15) |  414.4 MB | PBS_Generic-Start
+--------------------+---------------------+--------------+--------------------+-----------+----------------------
+ 00:00:06(00:00:05) |  00:00:00(00:00:01) |  50.4( 50.0) |   10:36:23 (Jan15) |  414.4 MB | PBS_Generic_Opt-Post
+--------------------+---------------------+--------------+--------------------+-----------+----------------------
+ 00:00:06(00:00:05) |  00:00:00(00:00:00) |   0.0(  0.0) |   10:36:23 (Jan15) |  414.4 MB | PBS_Generic-Postgen HBO Optimizations
+--------------------+---------------------+--------------+--------------------+-----------+----------------------
+ 00:00:06(00:00:05) |  00:00:00(00:00:00) |   0.0(  0.0) |   10:36:23 (Jan15) |  414.4 MB | PBS_TechMap-Start
+--------------------+---------------------+--------------+--------------------+-----------+----------------------
+ 00:00:06(00:00:05) |  00:00:00(00:00:00) |   0.0(  0.0) |   10:36:23 (Jan15) |  414.4 MB | PBS_TechMap-Premap HBO Optimizations
+--------------------+---------------------+--------------+--------------------+-----------+----------------------
+ 00:00:07(00:00:06) |  00:00:00(00:00:01) |  49.6( 50.0) |   10:36:24 (Jan15) |  414.4 MB | PBS_Techmap-Global Mapping
+--------------------+---------------------+--------------+--------------------+-----------+----------------------
+ 00:00:07(00:00:06) |  00:00:00(00:00:00) |   0.0(  0.0) |   10:36:24 (Jan15) |  414.4 MB | PBS_TechMap-Datapath Postmap Operations
+--------------------+---------------------+--------------+--------------------+-----------+----------------------
+ 00:00:07(00:00:06) |  00:00:00(00:00:00) |  -0.0(  0.0) |   10:36:24 (Jan15) |  414.4 MB | PBS_TechMap-Postmap HBO Optimizations
+--------------------+---------------------+--------------+--------------------+-----------+----------------------
+ 00:00:07(00:00:06) |  00:00:00(00:00:00) |   0.0(  0.0) |   10:36:24 (Jan15) |  414.4 MB | PBS_TechMap-Postmap Clock Gating
+--------------------+---------------------+--------------+--------------------+-----------+----------------------
+ 00:00:07(00:00:06) |  00:00:00(00:00:00) |   0.0(  0.0) |   10:36:24 (Jan15) |  414.4 MB | PBS_TechMap-Postmap Cleanup
+--------------------+---------------------+--------------+--------------------+-----------+----------------------
+Number of threads: 8 * 1   (id: pbs_debug, time_info v1.57)
+Info: (*N*) indicates data that was populated from previously saved time_info database
+Info: CPU time includes time of parent + longest thread
+PBS_Techmap-Post_MBCI - Elapsed_Time 0, CPU_Time 0.0
+stamp 'PBS_Techmap-Post_MBCI' being created for table 'pbs_debug'
+
+  Total Time (Wall) |  Stage Time (Wall)  |   % (Wall)   |    Date - Time     |  Memory   | Stage
+--------------------+---------------------+--------------+--------------------+-----------+----------------------
+ 00:00:05(00:00:04) |  00:00:00(00:00:00) |   0.0(  0.0) |   10:36:22 (Jan15) |  414.4 MB | PBS_Generic-Start
+--------------------+---------------------+--------------+--------------------+-----------+----------------------
+ 00:00:06(00:00:05) |  00:00:00(00:00:01) |  50.4( 50.0) |   10:36:23 (Jan15) |  414.4 MB | PBS_Generic_Opt-Post
+--------------------+---------------------+--------------+--------------------+-----------+----------------------
+ 00:00:06(00:00:05) |  00:00:00(00:00:00) |   0.0(  0.0) |   10:36:23 (Jan15) |  414.4 MB | PBS_Generic-Postgen HBO Optimizations
+--------------------+---------------------+--------------+--------------------+-----------+----------------------
+ 00:00:06(00:00:05) |  00:00:00(00:00:00) |   0.0(  0.0) |   10:36:23 (Jan15) |  414.4 MB | PBS_TechMap-Start
+--------------------+---------------------+--------------+--------------------+-----------+----------------------
+ 00:00:06(00:00:05) |  00:00:00(00:00:00) |   0.0(  0.0) |   10:36:23 (Jan15) |  414.4 MB | PBS_TechMap-Premap HBO Optimizations
+--------------------+---------------------+--------------+--------------------+-----------+----------------------
+ 00:00:07(00:00:06) |  00:00:00(00:00:01) |  49.6( 50.0) |   10:36:24 (Jan15) |  414.4 MB | PBS_Techmap-Global Mapping
+--------------------+---------------------+--------------+--------------------+-----------+----------------------
+ 00:00:07(00:00:06) |  00:00:00(00:00:00) |   0.0(  0.0) |   10:36:24 (Jan15) |  414.4 MB | PBS_TechMap-Datapath Postmap Operations
+--------------------+---------------------+--------------+--------------------+-----------+----------------------
+ 00:00:07(00:00:06) |  00:00:00(00:00:00) |  -0.0(  0.0) |   10:36:24 (Jan15) |  414.4 MB | PBS_TechMap-Postmap HBO Optimizations
+--------------------+---------------------+--------------+--------------------+-----------+----------------------
+ 00:00:07(00:00:06) |  00:00:00(00:00:00) |   0.0(  0.0) |   10:36:24 (Jan15) |  414.4 MB | PBS_TechMap-Postmap Clock Gating
+--------------------+---------------------+--------------+--------------------+-----------+----------------------
+ 00:00:07(00:00:06) |  00:00:00(00:00:00) |   0.0(  0.0) |   10:36:24 (Jan15) |  414.4 MB | PBS_TechMap-Postmap Cleanup
+--------------------+---------------------+--------------+--------------------+-----------+----------------------
+ 00:00:07(00:00:06) |  00:00:00(00:00:00) |   0.0(  0.0) |   10:36:24 (Jan15) |  414.4 MB | PBS_Techmap-Post_MBCI
+--------------------+---------------------+--------------+--------------------+-----------+----------------------
+Number of threads: 8 * 1   (id: pbs_debug, time_info v1.57)
+Info: (*N*) indicates data that was populated from previously saved time_info database
+Info: CPU time includes time of parent + longest thread
+##>=================== Cadence Confidential (Mapping-Logical) ===================
+##>Main Thread Summary:
+##>----------------------------------------------------------------------------------------
+##>STEP                           Elapsed       WNS       TNS     Insts      Area    Memory
+##>----------------------------------------------------------------------------------------
+##>M:Initial                            0         -         -        76       261       414
+##>M:Pre Cleanup                        0         -         -        76       261       414
+##>M:Setup                              0         -         -         -         -         -
+##>M:Launch ST                          0         -         -         -         -         -
+##>M:Design Partition                   0         -         -         -         -         -
+##>M:Create Partition Netlists          0         -         -         -         -         -
+##>M:Init Power                         0         -         -         -         -         -
+##>M:Budgeting                          0         -         -         -         -         -
+##>M:Derenv-DB                          0         -         -         -         -         -
+##>M:Debug Outputs                      0         -         -         -         -         -
+##>M:ST loading                         0         -         -         -         -         -
+##>M:Distributed                        0         -         -         -         -         -
+##>M:Timer                              0         -         -         -         -         -
+##>M:Assembly                           0         -         -         -         -         -
+##>M:DFT                                0         -         -         -         -         -
+##>M:DP Operations                      0         -         -        17       142       414
+##>M:Const Prop                         0     97318         0        17       142       414
+##>M:Cleanup                            0     97318         0        17       142       414
+##>M:MBCI                               0         -         -        17       142       414
+##>M:Const Gate Removal                 0         -         -         -         -         -
+##>M:Misc                               1
+##>----------------------------------------------------------------------------------------
+##>Total Elapsed                        1
+##>========================================================================================
+Info    : Done mapping. [SYNTH-5]
+        : Done mapping 'somador'.
+      flow.cputime  flow.realtime  timing.setup.tns  timing.setup.wns  snapshot
+UM:*                                                                   syn_map
+@file(somador.tcl) 99: get_db insts .base_cell.name -u ;# List all cell names used in the current design.
+@file(somador.tcl) 105: report_design_rules ;# > ${RPT_DIR}/${HDL_NAME}_drc.rpt
+============================================================
+  Generated by:           Genus(TM) Synthesis Solution 21.10-p002_1
+  Generated on:           Jan 15 2025  10:36:24 am
+  Module:                 somador
+  Library domain:         worst
+    Domain index:         0
+    Technology library:   slow_vdd1v0 1.0
+  Library domain:         best
+    Domain index:         1
+    Technology library:   fast_vdd1v2 1.0
+  Operating conditions:   PVT_0P9V_125C 
+  Operating conditions:   PVT_1P32V_0C 
+  Interconnect mode:      global
+  Area mode:              physical library
+============================================================
+
+Max_transition design rule: no violations.
+
+
+Max_capacitance design rule: no violations.
+
+
+Max_fanout design rule: no constraints.
+
+
+
+@file(somador.tcl) 106: report_area > ${RPT_DIR}/${HDL_NAME}_area.rpt
+@file(somador.tcl) 107: report_timing > ${RPT_DIR}/${HDL_NAME}_timing.rpt
+@file(somador.tcl) 108: report_gates > ${RPT_DIR}/${HDL_NAME}_gates.rpt
+@file(somador.tcl) 109: report_qor > ${RPT_DIR}/${HDL_NAME}_qor.rpt
+@file(somador.tcl) 110: source ${SCRIPT_DIR}/common/sdf_width_wa.etf
+Sourcing '/home/cinovador/Downloads/somador_fisico_UPDATE/backend/synthesis/scripts/common/sdf_width_wa.etf' (Wed Jan 15 10:36:24 -03 2025)...
+@file(somador.tcl) 111: write_sdf -edge check_edge -setuphold merge_always -nonegchecks -recrem merge_always -version 3.0 -design ${HDL_NAME}  > ${DEV_DIR}/${HDL_NAME}_worst.sdf
+@file(somador.tcl) 112: write_hdl ${HDL_NAME} > ${DEV_DIR}/${HDL_NAME}.v
+@file(somador.tcl) 114: exit
+Normal exit.

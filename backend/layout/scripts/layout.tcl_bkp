@@ -1,0 +1,114 @@
+
+#-----------------------------------------------------------------------------
+# Initial configurations
+#-----------------------------------------------------------------------------
+# see file ${PROJECT_DIR}/backend/synthesis/scripts/run_first.tcl
+
+#-----------------------------------------------------------------------------
+# (!) same as $DESIGNS.tcl (!) Main Custom Variables Design Dependent (set local)
+#-----------------------------------------------------------------------------
+set PROJECT_DIR $env(PROJECT_DIR)
+set TECH_DIR $env(TECH_DIR)
+set DESIGNS $env(DESIGNS)
+set HDL_NAME $env(HDL_NAME)
+set VLOG_LIST $env(VLOG_LIST)
+set INTERCONNECT_MODE ple
+
+#-----------------------------------------------------------------------------
+# (!) same as $DESIGNS.tcl (!) MAIN Custom Variables to be used in SDC (constraints file)
+#-----------------------------------------------------------------------------
+set MAIN_CLOCK_NAME clk
+set MAIN_RST_NAME rst_n
+set BEST_LIB_OPERATING_CONDITION PVT_1P32V_0C
+set WORST_LIB_OPERATING_CONDITION PVT_0P9V_125C
+set period_clk 100.0  ;# (100 ns = 10 MHz) (10 ns = 100 MHz) (2 ns = 500 MHz) (1 ns = 1 GHz)
+set clk_uncertainty 0.05 ;# ns (“a guess”)
+set clk_latency 0.10 ;# ns (“a guess”)
+set in_delay 0.30 ;# ns
+set out_delay 0.30;#ns 
+set out_load 0.045 ;#pF 
+set slew "146 164 264 252" ;#minimum rise, minimum fall, maximum rise and maximum fall 
+set slew_min_rise 0.146 ;# ns
+set slew_min_fall 0.164 ;# ns
+set slew_max_rise 0.264 ;# ns
+set slew_max_fall 0.252 ;# ns
+
+#-----------------------------------------------------------------------------
+# Load Path File
+#-----------------------------------------------------------------------------
+source ${PROJECT_DIR}/backend/synthesis/scripts/common/path.tcl
+
+
+#-----------------------------------------------------------------------------
+# set tech files to be used in ".globals" and ".view"
+#-----------------------------------------------------------------------------
+set WORST_LIST ${LIB_DIR}/slow_vdd1v0_basicCells.lib
+set BEST_LIST ${LIB_DIR}/fast_vdd1v2_basicCells.lib 
+set LEF_INIT "${TECH_DIR}/gsclib045_svt_v4.4/gsclib045/lef/gsclib045_tech.lef ${TECH_DIR}/gsclib045_svt_v4.4/gsclib045/lef/gsclib045_macro.lef ${TECH_DIR}/giolib045_v3.3/lef/giolib045.lef ";# LEF_LIST
+set CAP_MAX ${TECH_DIR}/gpdk045_v_6_0/soce/gpdk045.basic.CapTbl
+set CAP_MIN ${TECH_DIR}/gpdk045_v_6_0/soce/gpdk045.basic.CapTbl
+set QRC_LIST ${TECH_DIR}/gpdk045_v_6_0/qrc/rcworst/qrcTechFile
+
+#-----------------------------------------------------------------------------
+# set power nets
+#-----------------------------------------------------------------------------
+set NET_ZERO VSS
+set NET_ONE VDD
+
+#-----------------------------------------------------------------------------
+# Loads the design main files (netlist, LEFs, timing libraries)
+#-----------------------------------------------------------------------------
+source ${LAYOUT_DIR}/scripts/${DESIGNS}.globals
+
+#-----------------------------------------------------------------------------
+# Initiates the design files loaded above
+#-----------------------------------------------------------------------------
+init_design
+
+#-----------------------------------------------------------------------------
+# Tells Innovus the technology being used
+#-----------------------------------------------------------------------------
+setDesignMode -process 45
+
+
+#-----------------------------------------------------------------------------
+# Specify floorplan
+#-----------------------------------------------------------------------------
+# graphical
+
+# floorplan: aims aspect ratio = 1 and moves IO pads 8.0 microns from the outside edge of the core core box. core utilization = 0.85
+
+
+#-----------------------------------------------------------------------------
+# Power nets (Power planning) creating power, grounds rings and stripes
+#-----------------------------------------------------------------------------
+# graphical
+
+
+#-----------------------------------------------------------------------------
+# Power nets (Power planning) creating power, grounds rings and stripes
+#-----------------------------------------------------------------------------
+# graphical
+
+
+#-----------------------------------------------------------------------------
+# Add Ring (Power planning)
+#-----------------------------------------------------------------------------
+# graphical
+
+
+#-----------------------------------------------------------------------------
+# Sroute
+#-----------------------------------------------------------------------------
+# graphical
+
+
+#-----------------------------------------------------------------------------
+# Save Design: 01_power.enc
+#-----------------------------------------------------------------------------
+# graphical
+
+
+
+
+

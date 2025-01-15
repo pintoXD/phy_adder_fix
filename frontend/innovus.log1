@@ -1,0 +1,79 @@
+
+Cadence Innovus(TM) Implementation System.
+Copyright 2021 Cadence Design Systems, Inc. All rights reserved worldwide.
+
+Version:	v21.15-s110_1, built Fri Sep 23 13:08:12 PDT 2022
+Options:	-file /home/cinovador/Downloads/somador_fisico_UPDATE/backend/layout/scripts/layout.tcl 
+Date:		Wed Jan 15 10:28:15 2025
+Host:		cinova05.lesc.ufc.br (x86_64 w/Linux 4.18.0-553.27.1.el8_10.x86_64) (14cores*20cpus*13th Gen Intel(R) Core(TM) i5-13500 24576KB)
+OS:		Rocky Linux release 8.10 (Green Obsidian)
+
+License:
+		[10:28:15.201609] Configured Lic search path (21.01-s002): 5280@192.168.0.10
+
+		invs	Innovus Implementation System	21.1	checkout succeeded
+		8 CPU jobs allowed with the current license(s). Use setMultiCpuUsage to set your required CPU count.
+Change the soft stacksize limit to 0.2%RAM (63 mbytes). Set global soft_stack_size_limit to change the value.
+
+**INFO:  MMMC transition support version v31-84 
+
+<CMD> set_global _enable_mmmc_by_default_flow      $CTE::mmmc_default
+<CMD> suppressMessage ENCEXT-2799
+<CMD> getVersion
+[INFO] Loading PVS 23.11 fill procedures
+Sourcing file "/home/cinovador/Downloads/somador_fisico_UPDATE/backend/layout/scripts/layout.tcl" ...
+<CMD> set defHierChar /
+Set Default Input Pin Transition as 0.1 ps.
+<CMD> set delaycal_input_transition_delay 0.1ps
+<CMD> set fpIsMaxIoHeight 0
+<CMD> set init_design_settop 0
+<CMD> set init_gnd_net VSS
+<CMD> set init_lef_file {/home/tools/cadence/gpdk/gsclib045_svt_v4.4/gsclib045/lef/gsclib045_tech.lef /home/tools/cadence/gpdk/gsclib045_svt_v4.4/gsclib045/lef/gsclib045_macro.lef /home/tools/cadence/gpdk/giolib045_v3.3/lef/giolib045.lef }
+<CMD> set init_mmmc_file ../scripts/somador.view
+<CMD> set init_oa_search_lib {}
+<CMD> set init_pwr_net VDD
+<CMD> set init_verilog ../../synthesis/deliverables/somador.v
+<CMD> init_design
+**ERROR: (IMPSYT-6284):	Failed to open file ../scripts/somador.view for read.
+**ERROR: (IMPSYT-16038):	The specified file '/home/tools/cadence/gpdk/gsclib045_svt_v4.4/gsclib045/lef/gsclib045_tech.lef' could not be found. Check your file system, correct the file name.
+**ERROR: (IMPSYT-16038):	The specified file '/home/tools/cadence/gpdk/gsclib045_svt_v4.4/gsclib045/lef/gsclib045_macro.lef' could not be found. Check your file system, correct the file name.
+**ERROR: (IMPSYT-16038):	The specified file '/home/tools/cadence/gpdk/giolib045_v3.3/lef/giolib045.lef' could not be found. Check your file system, correct the file name.
+**ERROR: (IMPIMEX-7327):	The file '/home/tools/cadence/gpdk/gsclib045_svt_v4.4/gsclib045/lef/gsclib045_tech.lef /home/tools/cadence/gpdk/gsclib045_svt_v4.4/gsclib045/lef/gsclib045_macro.lef /home/tools/cadence/gpdk/giolib045_v3.3/lef/giolib045.lef' from the init_lef_file variable does not exist or does not have read permissions, so it can't be loaded. If the missing file has LEF data needed by the netlist, a fatal error may occur later when reading the netlist. You should correct the filename to avoid this warning message. 
+Note, the setImportMode -treatUndefinedCellAsBbox option controls if an undefined modules is treated as a black-boxes, and setCheckMode -tapeOut controls if an undefined module (not converted to a blackbox) is treated as a fatal error or empty module when reading the netlist.
+**ERROR: (IMPSYT-6692):	Invalid return code while executing '/home/cinovador/Downloads/somador_fisico_UPDATE/backend/layout/scripts/layout.tcl' was returned and script processing was stopped. Review the following error in '/home/cinovador/Downloads/somador_fisico_UPDATE/backend/layout/scripts/layout.tcl' then restart.
+Error info: /home/cinovador/Downloads/somador_fisico_UPDATE/backend/layout/scripts/layout.tcl: 
+    while executing
+"error [putError $::uiEmsHandleId 6729 $msg]"
+    (procedure "apply_design" line 36)
+    invoked from within
+"apply_design $loadViewDefinition"
+    (procedure "init_design" line 405)
+    invoked from within
+"init_design"
+    (file "/home/cinovador/Downloads/somador_fisico_UPDATE/backend/layout/scripts/layout.tcl" line 66)
+    invoked from within
+"::se_source_orig /home/cinovador/Downloads/somador_fisico_UPDATE/backend/layout/scripts/layout.tcl"
+    ("uplevel" body line 1)
+    invoked from within
+"uplevel [concat ::se_source_orig $args]"
+    (procedure "source" line 188)
+    invoked from within
+"source /home/cinovador/Downloads/somador_fisico_UPDATE/backend/layout/scripts/layout.tcl"
+    ("uplevel" body line 1)
+    invoked from within
+"uplevel #0 source /home/cinovador/Downloads/somador_fisico_UPDATE/backend/layout/scripts/layout.tcl"
+    ("eval" body line 1)
+    invoked from within
+"eval {uplevel #0 source /home/cinovador/Downloads/somador_fisico_UPDATE/backend/layout/scripts/layout.tcl}"
+    (in namespace inscope "::" script line 1)
+    invoked from within
+"namespace inscope :: eval "uplevel #0 source $fileName"".
+<CMD> win
+**INFO (INTERRUPT): The current script will stop before next command.
+**INFO (INTERRUPT): One more Ctrl-C to exit Innovus ...
+Innovus terminated by user interrupt.
+
+*** Memory Usage v#1 (Current mem = 1191.547M, initial mem = 483.883M) ***
+*** Message Summary: 0 warning(s), 8 error(s)
+
+--- Ending "Innovus" (totcpu=0:00:11.4, real=0:00:33.0, mem=1191.5M) ---

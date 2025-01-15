@@ -1,0 +1,58 @@
+[01/15 10:32:16      0s] 
+[01/15 10:32:16      0s] Cadence Innovus(TM) Implementation System.
+[01/15 10:32:16      0s] Copyright 2021 Cadence Design Systems, Inc. All rights reserved worldwide.
+[01/15 10:32:16      0s] 
+[01/15 10:32:16      0s] Version:	v21.15-s110_1, built Fri Sep 23 13:08:12 PDT 2022
+[01/15 10:32:16      0s] Options:	-file /home/cinovador/Downloads/somador_fisico_UPDATE/backend/layout/scripts/layout.tcl 
+[01/15 10:32:16      0s] Date:		Wed Jan 15 10:32:16 2025
+[01/15 10:32:16      0s] Host:		cinova05.lesc.ufc.br (x86_64 w/Linux 4.18.0-553.27.1.el8_10.x86_64) (14cores*20cpus*13th Gen Intel(R) Core(TM) i5-13500 24576KB)
+[01/15 10:32:16      0s] OS:		Rocky Linux release 8.10 (Green Obsidian)
+[01/15 10:32:16      0s] 
+[01/15 10:32:16      0s] License:
+[01/15 10:32:16      0s] 		[10:32:16.201577] Configured Lic search path (21.01-s002): 5280@192.168.0.10
+
+[01/15 10:32:25      0s] 		invs	Innovus Implementation System	21.1	checkout succeeded
+[01/15 10:32:25      0s] 		8 CPU jobs allowed with the current license(s). Use setMultiCpuUsage to set your required CPU count.
+[01/15 10:32:33      7s] Reset Parastics called with the command setExtractRCMode -reset@(#)CDS: Innovus v21.15-s110_1 (64bit) 09/23/2022 13:08 (Linux 3.10.0-693.el7.x86_64)
+[01/15 10:32:35      8s] @(#)CDS: NanoRoute 21.15-s110_1 NR220912-2004/21_15-UB (database version 18.20.592) {superthreading v2.17}
+[01/15 10:32:35      8s] @(#)CDS: AAE 21.15-s039 (64bit) 09/23/2022 (Linux 3.10.0-693.el7.x86_64)
+[01/15 10:32:35      8s] @(#)CDS: CTE 21.15-s038_1 () Sep 20 2022 11:42:13 ( )
+[01/15 10:32:35      8s] @(#)CDS: SYNTECH 21.15-s012_1 () Sep  5 2022 10:25:51 ( )
+[01/15 10:32:35      8s] @(#)CDS: CPE v21.15-s076
+[01/15 10:32:35      8s] @(#)CDS: IQuantus/TQuantus 21.1.1-s867 (64bit) Sun Jun 26 22:12:54 PDT 2022 (Linux 3.10.0-693.el7.x86_64)
+[01/15 10:32:35      8s] @(#)CDS: OA 22.60-p076 Wed May 18 13:45:29 2022
+[01/15 10:32:35      8s] @(#)CDS: SGN 20.10-d001 (01-Jun-2020) (64 bit executable, Qt5.9.0)
+[01/15 10:32:35      8s] @(#)CDS: RCDB 11.15.0
+[01/15 10:32:35      8s] @(#)CDS: STYLUS 21.12-s013_1 (08/15/2022 08:25 PDT)
+[01/15 10:32:35      8s] @(#)CDS: SystemPlanner-21.15Rel-8720 (21.15) (2022-08-22 18:31:54+0800)
+[01/15 10:32:35      8s] Create and set the environment variable TMPDIR to /tmp/innovus_temp_25128_cinova05.lesc.ufc.br_cinovador_Oi9G9c.
+
+[01/15 10:32:35      8s] Change the soft stacksize limit to 0.2%RAM (63 mbytes). Set global soft_stack_size_limit to change the value.
+[01/15 10:32:36      9s] 
+[01/15 10:32:36      9s] **INFO:  MMMC transition support version v31-84 
+[01/15 10:32:36      9s] 
+[01/15 10:32:36      9s] <CMD> set_global _enable_mmmc_by_default_flow      $CTE::mmmc_default
+[01/15 10:32:36      9s] <CMD> suppressMessage ENCEXT-2799
+[01/15 10:32:36      9s] <CMD> getVersion
+[01/15 10:32:36      9s] [INFO] Loading PVS 23.11 fill procedures
+[01/15 10:32:36      9s] Sourcing file "/home/cinovador/Downloads/somador_fisico_UPDATE/backend/layout/scripts/layout.tcl" ...
+[01/15 10:32:36      9s] **ERROR: (IMPSYT-6692):	Invalid return code while executing '/home/cinovador/Downloads/somador_fisico_UPDATE/backend/layout/scripts/layout.tcl' was returned and script processing was stopped. Review the following error in '/home/cinovador/Downloads/somador_fisico_UPDATE/backend/layout/scripts/layout.tcl' then restart.
+[01/15 10:32:36      9s] **ERROR: (IMPSYT-6693):	Error message: /home/cinovador/Downloads/somador_fisico_UPDATE/backend/layout/scripts/layout.tcl: can't read "env(LIB_DIR)": no such element in array.
+[01/15 10:32:36      9s] <CMD> win
+[01/15 10:33:21     12s] 
+--------------------------------------------------------------------------------
+Exiting Innovus on Wed Jan 15 10:33:21 2025
+  Total CPU time:     0:00:12
+  Total real time:    0:01:07
+  Peak memory (main): 1013.25MB
+
+[01/15 10:33:21     12s] 
+[01/15 10:33:21     12s] *** Memory Usage v#1 (Current mem = 1195.969M, initial mem = 483.883M) ***
+[01/15 10:33:21     12s] 
+[01/15 10:33:21     12s] *** Summary of all messages that are not suppressed in this session:
+[01/15 10:33:21     12s] Severity  ID               Count  Summary                                  
+[01/15 10:33:21     12s] ERROR     IMPSYT-6692          1  Invalid return code while executing '%s'...
+[01/15 10:33:21     12s] ERROR     IMPSYT-6693          1  Error message: %s: %s.                   
+[01/15 10:33:21     12s] *** Message Summary: 0 warning(s), 2 error(s)
+[01/15 10:33:21     12s] 
+[01/15 10:33:21     12s] --- Ending "Innovus" (totcpu=0:00:12.6, real=0:01:05, mem=1196.0M) ---

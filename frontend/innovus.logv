@@ -1,0 +1,100 @@
+[01/15 10:21:19      0s] 
+[01/15 10:21:19      0s] Cadence Innovus(TM) Implementation System.
+[01/15 10:21:19      0s] Copyright 2021 Cadence Design Systems, Inc. All rights reserved worldwide.
+[01/15 10:21:19      0s] 
+[01/15 10:21:19      0s] Version:	v21.15-s110_1, built Fri Sep 23 13:08:12 PDT 2022
+[01/15 10:21:19      0s] Options:	-file /home/cinovador/Downloads/somador_fisico_UPDATE/backend/layout/scripts/layout.tcl 
+[01/15 10:21:19      0s] Date:		Wed Jan 15 10:21:19 2025
+[01/15 10:21:19      0s] Host:		cinova05.lesc.ufc.br (x86_64 w/Linux 4.18.0-553.27.1.el8_10.x86_64) (14cores*20cpus*13th Gen Intel(R) Core(TM) i5-13500 24576KB)
+[01/15 10:21:19      0s] OS:		Rocky Linux release 8.10 (Green Obsidian)
+[01/15 10:21:19      0s] 
+[01/15 10:21:19      0s] License:
+[01/15 10:21:19      0s] 		[10:21:19.201585] Configured Lic search path (21.01-s002): 5280@192.168.0.10
+
+[01/15 10:21:19      0s] 		invs	Innovus Implementation System	21.1	checkout succeeded
+[01/15 10:21:19      0s] 		8 CPU jobs allowed with the current license(s). Use setMultiCpuUsage to set your required CPU count.
+[01/15 10:21:27      7s] Reset Parastics called with the command setExtractRCMode -reset@(#)CDS: Innovus v21.15-s110_1 (64bit) 09/23/2022 13:08 (Linux 3.10.0-693.el7.x86_64)
+[01/15 10:21:29      8s] @(#)CDS: NanoRoute 21.15-s110_1 NR220912-2004/21_15-UB (database version 18.20.592) {superthreading v2.17}
+[01/15 10:21:29      8s] @(#)CDS: AAE 21.15-s039 (64bit) 09/23/2022 (Linux 3.10.0-693.el7.x86_64)
+[01/15 10:21:29      8s] @(#)CDS: CTE 21.15-s038_1 () Sep 20 2022 11:42:13 ( )
+[01/15 10:21:29      8s] @(#)CDS: SYNTECH 21.15-s012_1 () Sep  5 2022 10:25:51 ( )
+[01/15 10:21:29      8s] @(#)CDS: CPE v21.15-s076
+[01/15 10:21:29      8s] @(#)CDS: IQuantus/TQuantus 21.1.1-s867 (64bit) Sun Jun 26 22:12:54 PDT 2022 (Linux 3.10.0-693.el7.x86_64)
+[01/15 10:21:29      8s] @(#)CDS: OA 22.60-p076 Wed May 18 13:45:29 2022
+[01/15 10:21:29      8s] @(#)CDS: SGN 20.10-d001 (01-Jun-2020) (64 bit executable, Qt5.9.0)
+[01/15 10:21:29      8s] @(#)CDS: RCDB 11.15.0
+[01/15 10:21:29      8s] @(#)CDS: STYLUS 21.12-s013_1 (08/15/2022 08:25 PDT)
+[01/15 10:21:29      8s] @(#)CDS: SystemPlanner-21.15Rel-8720 (21.15) (2022-08-22 18:31:54+0800)
+[01/15 10:21:29      8s] Create and set the environment variable TMPDIR to /tmp/innovus_temp_20065_cinova05.lesc.ufc.br_cinovador_6GtPsB.
+
+[01/15 10:21:29      8s] Change the soft stacksize limit to 0.2%RAM (63 mbytes). Set global soft_stack_size_limit to change the value.
+[01/15 10:21:30      9s] 
+[01/15 10:21:30      9s] **INFO:  MMMC transition support version v31-84 
+[01/15 10:21:30      9s] 
+[01/15 10:21:30      9s] <CMD> set_global _enable_mmmc_by_default_flow      $CTE::mmmc_default
+[01/15 10:21:30      9s] <CMD> suppressMessage ENCEXT-2799
+[01/15 10:21:30      9s] <CMD> getVersion
+[01/15 10:21:30      9s] [INFO] Loading PVS 23.11 fill procedures
+[01/15 10:21:30     10s] Sourcing file "/home/cinovador/Downloads/somador_fisico_UPDATE/backend/layout/scripts/layout.tcl" ...
+[01/15 10:21:30     10s] <CMD> set defHierChar /
+[01/15 10:21:30     10s] Set Default Input Pin Transition as 0.1 ps.
+[01/15 10:21:30     10s] <CMD> set delaycal_input_transition_delay 0.1ps
+[01/15 10:21:30     10s] <CMD> set fpIsMaxIoHeight 0
+[01/15 10:21:30     10s] <CMD> set init_design_settop 0
+[01/15 10:21:30     10s] <CMD> set init_gnd_net VSS
+[01/15 10:21:30     10s] <CMD> set init_lef_file {/home/tools/cadence/gpdk/gsclib045_svt_v4.4/gsclib045/lef/gsclib045_tech.lef /home/tools/cadence/gpdk/gsclib045_svt_v4.4/gsclib045/lef/gsclib045_macro.lef /home/tools/cadence/gpdk/giolib045_v3.3/lef/giolib045.lef }
+[01/15 10:21:30     10s] <CMD> set init_mmmc_file ../scripts/somador.view
+[01/15 10:21:30     10s] <CMD> set init_oa_search_lib {}
+[01/15 10:21:30     10s] <CMD> set init_pwr_net VDD
+[01/15 10:21:30     10s] <CMD> set init_verilog ../../synthesis/deliverables/somador.v
+[01/15 10:21:30     10s] <CMD> init_design
+[01/15 10:21:30     10s] **ERROR: (IMPSYT-6284):	Failed to open file ../scripts/somador.view for read.
+[01/15 10:21:36     10s] **ERROR: (IMPSYT-16038):	The specified file '/home/tools/cadence/gpdk/gsclib045_svt_v4.4/gsclib045/lef/gsclib045_tech.lef' could not be found. Check your file system, correct the file name.
+[01/15 10:21:36     10s] **ERROR: (IMPSYT-16038):	The specified file '/home/tools/cadence/gpdk/gsclib045_svt_v4.4/gsclib045/lef/gsclib045_macro.lef' could not be found. Check your file system, correct the file name.
+[01/15 10:21:36     10s] **ERROR: (IMPSYT-16038):	The specified file '/home/tools/cadence/gpdk/giolib045_v3.3/lef/giolib045.lef' could not be found. Check your file system, correct the file name.
+[01/15 10:21:36     10s] **ERROR: (IMPIMEX-7327):	The file '/home/tools/cadence/gpdk/gsclib045_svt_v4.4/gsclib045/lef/gsclib045_tech.lef /home/tools/cadence/gpdk/gsclib045_svt_v4.4/gsclib045/lef/gsclib045_macro.lef /home/tools/cadence/gpdk/giolib045_v3.3/lef/giolib045.lef' from the init_lef_file variable does not exist or does not have read permissions, so it can't be loaded. If the missing file has LEF data needed by the netlist, a fatal error may occur later when reading the netlist. You should correct the filename to avoid this warning message. 
+[01/15 10:21:36     10s] Note, the setImportMode -treatUndefinedCellAsBbox option controls if an undefined modules is treated as a black-boxes, and setCheckMode -tapeOut controls if an undefined module (not converted to a blackbox) is treated as a fatal error or empty module when reading the netlist.
+[01/15 10:21:36     10s] **ERROR: (IMPSYT-6692):	Invalid return code while executing '/home/cinovador/Downloads/somador_fisico_UPDATE/backend/layout/scripts/layout.tcl' was returned and script processing was stopped. Review the following error in '/home/cinovador/Downloads/somador_fisico_UPDATE/backend/layout/scripts/layout.tcl' then restart.
+[01/15 10:21:36     10s] Error info: /home/cinovador/Downloads/somador_fisico_UPDATE/backend/layout/scripts/layout.tcl: 
+[01/15 10:21:36     10s]     while executing
+[01/15 10:21:36     10s] "error [putError $::uiEmsHandleId 6729 $msg]"
+[01/15 10:21:36     10s]     (procedure "apply_design" line 36)
+[01/15 10:21:36     10s]     invoked from within
+[01/15 10:21:36     10s] "apply_design $loadViewDefinition"
+[01/15 10:21:36     10s]     (procedure "init_design" line 405)
+[01/15 10:21:36     10s]     invoked from within
+[01/15 10:21:36     10s] "init_design"
+[01/15 10:21:36     10s]     (file "/home/cinovador/Downloads/somador_fisico_UPDATE/backend/layout/scripts/layout.tcl" line 66)
+[01/15 10:21:36     10s]     invoked from within
+[01/15 10:21:36     10s] "::se_source_orig /home/cinovador/Downloads/somador_fisico_UPDATE/backend/layout/scripts/layout.tcl"
+[01/15 10:21:36     10s]     ("uplevel" body line 1)
+[01/15 10:21:36     10s]     invoked from within
+[01/15 10:21:36     10s] "uplevel [concat ::se_source_orig $args]"
+[01/15 10:21:36     10s]     (procedure "source" line 188)
+[01/15 10:21:36     10s]     invoked from within
+[01/15 10:21:36     10s] "source /home/cinovador/Downloads/somador_fisico_UPDATE/backend/layout/scripts/layout.tcl"
+[01/15 10:21:36     10s]     ("uplevel" body line 1)
+[01/15 10:21:36     10s]     invoked from within
+[01/15 10:21:36     10s] "uplevel #0 source /home/cinovador/Downloads/somador_fisico_UPDATE/backend/layout/scripts/layout.tcl"
+[01/15 10:21:36     10s]     ("eval" body line 1)
+[01/15 10:21:36     10s]     invoked from within
+[01/15 10:21:36     10s] "eval {uplevel #0 source /home/cinovador/Downloads/somador_fisico_UPDATE/backend/layout/scripts/layout.tcl}"
+[01/15 10:21:36     10s]     (in namespace inscope "::" script line 1)
+[01/15 10:21:36     10s]     invoked from within
+[01/15 10:21:36     10s] "namespace inscope :: eval "uplevel #0 source $fileName"".
+[01/15 10:21:36     10s] <CMD> win
+[01/15 10:24:51     22s] **INFO (INTERRUPT): One more Ctrl-C to exit Innovus ...
+[01/15 10:24:52     22s] Innovus terminated by user interrupt.
+[01/15 10:24:52     22s] 
+[01/15 10:24:52     22s] *** Memory Usage v#1 (Current mem = 1199.430M, initial mem = 483.883M) ***
+[01/15 10:24:52     22s] 
+[01/15 10:24:52     22s] *** Summary of all messages that are not suppressed in this session:
+[01/15 10:24:52     22s] Severity  ID               Count  Summary                                  
+[01/15 10:24:52     22s] ERROR     IMPSYT-6284          2  Failed to open file %s for read.         
+[01/15 10:24:52     22s] ERROR     IMPSYT-6692          1  Invalid return code while executing '%s'...
+[01/15 10:24:52     22s] ERROR     IMPSYT-6729          1  %s                                       
+[01/15 10:24:52     22s] ERROR     IMPSYT-16038         3  The specified file '%s' could not be fou...
+[01/15 10:24:52     22s] ERROR     IMPIMEX-7327         1  The file '%s' from the init_lef_file var...
+[01/15 10:24:52     22s] *** Message Summary: 0 warning(s), 8 error(s)
+[01/15 10:24:52     22s] 
+[01/15 10:24:52     22s] --- Ending "Innovus" (totcpu=0:00:22.6, real=0:03:33, mem=1199.4M) ---
